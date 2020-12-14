@@ -1,23 +1,51 @@
 import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class ChoicesGroupView extends React.Component {
+  groupName;
+  // choices: Choice[] = [];
+  constructor(props: any){
+    super(props);
+    this.groupName = props.groupName;
+  }
+
+  state = {
+    choices: []
+  }
+
+  render() {
+    return (<div>
+      <input type="radio" name={this.groupName} id=""/>
+    </div>);
+  }
 }
 
-export default App;
+export default class QuestionView extends React.Component{
+  render() {
+    return (<div>
+      <textarea></textarea>
+      <ChoicesGroupView children="asdas" />
+    </div>);
+  }
+}
+
+interface Choice {
+  rate: number;
+  content: string | ImageBitmap;
+}
+
+interface Answer {
+  title: string;
+  description: string;
+  range: RateRange;
+}
+
+interface RateRange {
+  minRate: number;
+  maxRate: number;
+}
+
+interface Question {
+  choices: Choice[];
+  question: string;
+  answers: Answer[];
+}
