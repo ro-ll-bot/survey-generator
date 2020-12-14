@@ -30,8 +30,7 @@ class ChoicesGroupView extends React.Component {
 
   render() {
     return (<div>
-      {/* {choiceView(this.groupName)} */}
-      {this.state.choices}
+      {this.state.choices.map(elem => elem)}
       <button onClick={this.addNewChoice}>Add Choice</button>
     </div>);
   }
@@ -41,18 +40,28 @@ class QuestionView extends React.Component{
   render() {
     return (<div className="questionView">
       <textarea>Question</textarea>
-      <span>hll</span>
-      <ChoicesGroupView children="asdas" />
+      <span>lock</span>
+      <ChoicesGroupView/>
     </div>);
   }
 }
 
 export default class ExamGeneratorView extends React.Component {
+
+  questions: JSX.Element[] = [];
+  state = {
+    questions: this.questions
+  }
+
+  addNewQuestion = () => {
+    this.questions.push(<QuestionView></QuestionView>);
+    this.setState({questions: this.questions});
+  }
+  
   render() {
     return (<div className="generatorView">
-      <QuestionView></QuestionView>
-      <QuestionView></QuestionView>
-      <QuestionView></QuestionView>
+      {this.questions.map(question => question)}
+      <button onClick={this.addNewQuestion}>Add Question</button>
     </div>);
   }
 }
