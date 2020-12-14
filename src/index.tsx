@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import QuestionView from './App';
+import ExamGeneratorView from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <QuestionView />
+    <ExamGeneratorView />
   </React.StrictMode>,
   document.getElementById('root')
 );
