@@ -1,31 +1,28 @@
 import React from 'react';
 import './App.css';
 
-const choiceView: (group: string)=>JSX.Element = (group: string) => (
+const choiceView: (group: string) => JSX.Element = (group: string) => (
   <div>
-      <input type="number" name={group} id="" className="choiceNumberInput"/>
-      <input type="text" name={group} id=""/>
+    <input type="number" name={group} id="" className="choiceNumberInput" />
+    <input type="text" name={group} id="" />
   </div>
 );
 
-class ChoicesGroupView extends React.Component {
-  groupName;
+interface ChoiceGroupProps {
+  groupName: string;
   isEditable: boolean;
- 
+}
+
+class ChoicesGroupView extends React.Component<ChoiceGroupProps> {
   choices: JSX.Element[] = [];
-  constructor(props: any){
-    super(props);
-    this.groupName = props.groupName;
-    this.isEditable = props.isEditable;
-  }
 
   state = {
     choices: this.choices
   }
 
   addNewChoice = () => {
-    this.state.choices.push(choiceView(this.groupName));
-    this.setState({choices: this.state.choices});
+    this.state.choices.push(choiceView(this.props.groupName));
+    this.setState({ choices: this.state.choices });
   };
 
   render() {
@@ -36,32 +33,54 @@ class ChoicesGroupView extends React.Component {
   }
 }
 
-class QuestionView extends React.Component{
+interface QuestionViewProps {
+  sharedQuestionList: Question[];
+}
+
+class QuestionView extends React.Component<QuestionViewProps>{
+
+  choices: Choice[] = [];
+
+  protected setChoice(choices: Choice[]) {
+    this.choices = choices;
+  }
+
+  private getQuestion(): Question {
+    return {} as Question;
+  }
+
   render() {
     return (<div className="questionView">
       <textarea>Question</textarea>
       <span>lock</span>
-      <ChoicesGroupView/>
+      <ChoicesGroupView groupName={"group"} isEditable={true} />
     </div>);
   }
 }
 
 export default class ExamGeneratorView extends React.Component {
 
-  questions: JSX.Element[] = [];
+  questionViews: JSX.Element[] = [];
+  questions: Question[] = [];
   state = {
-    questions: this.questions
+    questionViews: this.questionViews
   }
 
   addNewQuestion = () => {
-    this.questions.push(<QuestionView></QuestionView>);
-    this.setState({questions: this.questions});
+    this.questionViews.push(<QuestionView 
+      sharedQuestionList={this.questions}></QuestionView>);
+    this.setState({ questions: this.questionViews });
   }
-  
+
+  createExam = () => {
+    console.log(JSON.stringify(this.questions));
+  }
+
   render() {
     return (<div className="generatorView">
-      {this.questions.map(question => question)}
+      {this.questionViews.map(question => question)}
       <button onClick={this.addNewQuestion}>Add Question</button>
+      <button onClick={this.createExam}>Finish Survey</button>
     </div>);
   }
 }
