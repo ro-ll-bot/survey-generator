@@ -25,6 +25,16 @@ class ChoicesGroupView extends React.Component<ChoiceGroupProps> {
     this.setState({ choices: this.state.choices });
   };
 
+  public getChoices(): Choice[] {
+    const choiceList:Choice[] = [];
+    console.log("heyyo!");
+    this.choices.forEach(choiceView => {
+      choiceList.push();
+      console.log(choiceView);
+    })
+    return choiceList;
+  }
+
   render() {
     return (<div>
       {this.state.choices.map(elem => elem)}
@@ -40,20 +50,31 @@ interface QuestionViewProps {
 class QuestionView extends React.Component<QuestionViewProps>{
 
   choices: Choice[] = [];
+  choiceRef: React.RefObject<ChoicesGroupView>;
+
+  constructor(props: any){
+    super(props);
+    this.choiceRef = React.createRef<ChoicesGroupView>(); 
+  }
 
   protected setChoice(choices: Choice[]) {
     this.choices = choices;
   }
 
-  private getQuestion(): Question {
-    return {} as Question;
+  public getQuestion(): Question{
+    console.log("Hello world");
+    const choices = this.choiceRef.current?.getChoices();
+    return {
+      choices: choices,
+      question: "my question"
+    } as Question;
   }
 
   render() {
     return (<div className="questionView">
       <textarea>Question</textarea>
       <span>lock</span>
-      <ChoicesGroupView groupName={"group"} isEditable={true} />
+      <ChoicesGroupView ref={this.choiceRef} groupName={"group"} isEditable={true} />
     </div>);
   }
 }
@@ -62,18 +83,35 @@ export default class ExamGeneratorView extends React.Component {
 
   questionViews: JSX.Element[] = [];
   questions: Question[] = [];
+  questionViewRef: React.RefObject<QuestionView>;
   state = {
     questionViews: this.questionViews
   }
 
+  constructor(props: any) {
+    super(props);
+    this.questionViewRef = React.createRef<QuestionView>();
+  }
+
   addNewQuestion = () => {
-    this.questionViews.push(<QuestionView 
+    this.questionViews.push(<QuestionView
+      ref={this.questionViewRef} 
       sharedQuestionList={this.questions}></QuestionView>);
     this.setState({ questions: this.questionViews });
   }
 
   createExam = () => {
-    console.log(JSON.stringify(this.questions));
+    console.log("create exm function started..");
+    console.log(this.questionViewRef);
+    // this.questionViews.forEach(questionView => {
+      
+    // });
+    this.questionViewRef.current?.getQuestion();
+    console.log("This question ref ran.");
+  }
+
+  componentDidMount() {
+    console.log(this.questionViewRef);    
   }
 
   render() {
