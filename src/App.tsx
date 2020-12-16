@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 
-const choiceView: (group: string) => JSX.Element = (group: string) => (
+const choiceView: (group: string, id: number) => JSX.Element = (group: string, id: number) => (
   <div>
-    <input type="number" name={group} id="" className="choiceNumberInput" />
-    <input type="text" name={group} id="" />
+    <input type="number" name={group} id={`number_${id}`} className="choiceNumberInput" />
+    <input type="text" name={group} id={`text_${id}`} />
   </div>
 );
 
@@ -21,17 +21,20 @@ class ChoicesGroupView extends React.Component<ChoiceGroupProps> {
   }
 
   addNewChoice = () => {
-    this.state.choices.push(choiceView(this.props.groupName));
+    this.state.choices.push(choiceView(this.props.groupName, this.choices.length));
     this.setState({ choices: this.state.choices });
   };
 
   public getChoices(): Choice[] {
     const choiceList:Choice[] = [];
-    console.log("heyyo!");
-    this.choices.forEach(choiceView => {
-      choiceList.push();
-      console.log(choiceView);
-    })
+    // console.log("heyyo!");
+    for(let i=0; i<this.choices.length; i++) {
+      const choice: Choice = {
+        rate: i,
+        content: `content_${i}` 
+      };
+      choiceList.push(choice);
+    }
     return choiceList;
   }
 
@@ -44,7 +47,8 @@ class ChoicesGroupView extends React.Component<ChoiceGroupProps> {
 }
 
 interface QuestionViewProps {
-  sharedQuestionList: Question[];
+  id: number;
+  sharedQuestionList?: Question[];
 }
 
 class QuestionView extends React.Component<QuestionViewProps>{
@@ -62,17 +66,17 @@ class QuestionView extends React.Component<QuestionViewProps>{
   }
 
   public getQuestion(): Question{
-    console.log("Hello world");
+    // console.log("Hello world");
     const choices = this.choiceRef.current?.getChoices();
     return {
       choices: choices,
-      question: "my question"
+      question: `question_${this.props.id}`
     } as Question;
   }
 
   render() {
     return (<div className="questionView">
-      <textarea>Question</textarea>
+      <textarea id={`question_${this.props.id}`}>Question</textarea>
       <span>lock</span>
       <ChoicesGroupView ref={this.choiceRef} groupName={"group"} isEditable={true} />
     </div>);
@@ -83,35 +87,28 @@ export default class ExamGeneratorView extends React.Component {
 
   questionViews: JSX.Element[] = [];
   questions: Question[] = [];
-  questionViewRef: React.RefObject<QuestionView>;
+  questionViewRefs: React.RefObject<QuestionView>[] = [];
   state = {
     questionViews: this.questionViews
   }
 
-  constructor(props: any) {
-    super(props);
-    this.questionViewRef = React.createRef<QuestionView>();
-  }
-
   addNewQuestion = () => {
+    this.questionViewRefs.push(React.createRef<QuestionView>());
     this.questionViews.push(<QuestionView
-      ref={this.questionViewRef} 
-      sharedQuestionList={this.questions}></QuestionView>);
+      ref={this.questionViewRefs[this.questionViewRefs.length -1]} 
+      id={this.questionViewRefs.length}></QuestionView>);
     this.setState({ questions: this.questionViews });
   }
 
   createExam = () => {
-    console.log("create exm function started..");
-    console.log(this.questionViewRef);
-    // this.questionViews.forEach(questionView => {
-      
-    // });
-    this.questionViewRef.current?.getQuestion();
-    console.log("This question ref ran.");
-  }
+    
+    this.questionViewRefs.forEach(ref => {
+      const question: Question | undefined = ref.current?.getQuestion();
+      if(question !== undefined)
+        this.questions.push(question);
+    });
 
-  componentDidMount() {
-    console.log(this.questionViewRef);    
+    console.log(JSON.stringify(this.questions));
   }
 
   render() {
@@ -128,33 +125,33 @@ interface Choice {
   content: string | ImageBitmap;
 }
 
-interface Answer {
-  title: string;
-  description: string;
-  range: RateRange;
-}
+// interface Answer {
+//   title: string;
+//   description: string;
+//   range: RateRange;
+// }
 
-interface RateRange {
-  minRate: number;
-  maxRate: number;
-}
+// interface RateRange {
+//   minRate: number;
+//   maxRate: number;
+// }
 
 interface Question {
   choices: Choice[];
   question: string;
 }
 
-interface User {
-  firstname: string;
-  lastname: string;
-  username: string;
-  email: string;
-}
+// interface User {
+//   firstname: string;
+//   lastname: string;
+//   username: string;
+//   email: string;
+// }
 
-interface Exam {
-  questions: Question[];
-  title: string;
-  author: User;
-  answers: Answer[];
-  tags: string[];
-}
+// interface Exam {
+//   questions: Question[];
+//   title: string;
+//   author: User;
+//   answers: Answer[];
+//   tags: string[];
+// }
