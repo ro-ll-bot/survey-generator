@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/main.css';
 import './App.css';
 
 const choiceView: (group: string, id: number) => JSX.Element = (group: string, id: number) => (
