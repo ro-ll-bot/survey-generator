@@ -1,37 +1,46 @@
 import React from 'react';
-import Answer from '../answer/Answer';
+import { Choice, ChoicesGroupView } from '../choice/Choice'
 
-interface QuestionProps {
-  id: number,
-  content: string
+
+interface QuestionViewProps {
+  id: number;
+  sharedQuestionList?: Question[];
 }
 
-const questions: QuestionProps[] = [
-  {
-    id: 1,
-    content: "Is it a question?"
-  },
-  {
-    id: 2,
-    content: "Is it also a question?"
-  },
-  {
-    id: 3,
-    content: "What is it?"
+export class QuestionView extends React.Component<QuestionViewProps>{
+
+  choices: Choice[] = [];
+  choiceRef: React.RefObject<ChoicesGroupView>;
+
+  constructor(props: any) {
+    super(props);
+    this.choiceRef = React.createRef<ChoicesGroupView>();
   }
-]
 
-function Question(/*{id, content}: QuestionProps*/) {
-  return (
-    <ol className="question-container">
-      {questions.map((question) => (
-        <li key={question.id} className="question">
-          <h3>{question.content}</h3>
-          <Answer />
-        </li>
-      ))}
-    </ol>
-  );
+  protected setChoice(choices: Choice[]) {
+    this.choices = choices;
+  }
+
+  public getQuestion(): Question {
+    // console.log("Hello world");
+    const choices = this.choiceRef.current?.getChoices();
+    return {
+      choices: choices,
+      question: `question_${this.props.id}`
+    } as Question;
+  }
+
+  render() {
+    return (<div className="questionView">
+      <textarea id={`question_${this.props.id}`}>Question</textarea>
+      <span>lock</span>
+      <ChoicesGroupView ref={this.choiceRef} groupName={"group"} isEditable={true} />
+    </div>);
+  }
 }
 
-export default Question;
+
+export interface Question {
+  choices: Choice[];
+  question: string;
+}
