@@ -1,0 +1,15 @@
+.button {
+  background-color: #ffdf99;
+  border: 1px solid #ffae00;
+  border-radius: .5rem;
+}
+
+.button:hover {
+  background-color: #ffae00;
+}
+
+.question-container {
+  border: 1px solid #ffae00;
+  border-radius: .5rem;
+}
+/*# sourceMappingURL=main.css.map */

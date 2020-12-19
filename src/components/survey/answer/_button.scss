@@ -1,0 +1,9 @@
+.button {
+  background-color: $main-color-light;
+  border: 1px solid $main-color;
+  border-radius: .5rem;
+
+  &:hover {
+    background-color: $main-color;
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AEAA,AAAA,OAAO,CAAC;EACN,gBAAgB,EDCC,OAAwB;ECAzC,MAAM,EAAE,GAAG,CAAC,KAAK,CDFN,OAAgB;ECG3B,aAAa,EAAE,KAAK;CAKrB;;AARD,AAKE,OALK,AAKJ,MAAM,CAAC;EACN,gBAAgB,EDNP,OAAgB;CCO1B;;ACLA,AAAD,mBAAW,CAAC;EACV,MAAM,EAAE,GAAG,CAAC,KAAK,CFHR,OAAgB;EEIzB,aAAa,EAAE,KAAK;CACrB",
+    "sources": [
+        "../components/main.scss",
+        "../components/_variables.scss",
+        "../components/survey/answer/_button.scss",
+        "../components/survey/question/_question.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
