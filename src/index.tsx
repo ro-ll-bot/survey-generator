@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ExamGeneratorView from './components/core/survey/Survey';
+
+import ExamGeneratorView from './components/survey/Survey';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

@@ -44,3 +44,5 @@ export interface Question {
   choices: Choice[];
   question: string;
 }
+
+export default QuestionView;
