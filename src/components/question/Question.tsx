@@ -1,36 +1,55 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Choice, ChoiceGroupView } from '../choice/Choice'
 
+function getQuestionView(id: number, choice: Choice[],
+  questionInputHandler: (idx: number, data: string) => void) {
 
-interface QuestionViewProps {
-  id: number;
+  return (
+    <div>
+      <textarea onChange={e => questionInputHandler(id, e.target.value)}></textarea>
+      <span>lock</span>
+      <ChoiceGroupView choiceList={choice} />
+    </div>
+  );
 }
 
-export class QuestionView extends React.Component<QuestionViewProps>{
+export interface QuestionProps {
+  questionList: Question[];
+}
 
-  choice: Choice[] = [];
+export function QuestionGroupView(props: QuestionProps) {
 
-  public getQuestion(): Question {
-    return {
-      choices: this.choice,
-      question: `question_${this.props.id}`
-    } as Question;
+  const [id, setId] = useState(0);
+  const [questions, setQuestions] = useState<Question[]>(props.questionList);
+
+  useEffect(() => {
+    // render the screen when new question added.
+  }, [questions]);
+
+  const questionInputChange = (idx: number, data: string) => {
+    questions[idx].question = data;
+  };
+
+  const addNewQuestion = () => {
+    questions.push({id:id, question:"", choices: []});
+    setId(id + 1);
+    setQuestions(questions);
   }
 
-  render() {
-    return (
+  return (
     <div>
-      <textarea>Question</textarea>
-      <span>lock</span>
-      <ChoiceGroupView choiceList={this.choice} />
-    </div>);
-  }
+      {questions.map(question => {
+        return getQuestionView(question.id, question.choices, questionInputChange);
+      })}
+      <button onClick={addNewQuestion}>Add Question</button>
+    </div>
+  );
 }
 
 
 export interface Question {
+  id: number;
   choices: Choice[];
   question: string;
 }
 
-export default QuestionView;
