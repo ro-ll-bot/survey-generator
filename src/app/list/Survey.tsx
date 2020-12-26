@@ -81,15 +81,15 @@ function Survey() {
   const [questions, setQuestions] = useState(questionList);
 
   return (
-    <div>
-      <ol>
+    <div className="question-container">
+      <ol className="question-form">
         {questions.map((question) => (
-          <li>
+          <li className="question">
             {question.content}
-            <ul>
+            <ul className="choice-container">
               {question.choices.map((choice) => (
-                <li>
-                  <button>
+                <li className="choice-list"> 
+                  <button className="button choice">
                   {choice.content}
                   </button>
                 </li>
@@ -98,7 +98,7 @@ function Survey() {
           </li>
         ))}
       </ol>
-      <button>Send</button>
+      <button className="button">Send</button>
     </div>
   )
 }

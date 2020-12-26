@@ -8,6 +8,28 @@
   background-color: #ffae00;
 }
 
+body {
+  display: -ms-grid;
+  display: grid;
+}
+
+.question-container {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+}
+
+.choice-list {
+  min-height: 2rem;
+  margin-top: 1rem;
+}
+
 .question-container {
   border: 1px solid #ffae00;
   border-radius: .5rem;

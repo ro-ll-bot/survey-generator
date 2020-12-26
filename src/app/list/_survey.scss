@@ -1,0 +1,24 @@
+.question {
+
+  &-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+   
+  }
+
+}
+
+.choice {
+
+  &-container {
+    
+
+  }
+
+  &-list {
+    min-height: 2rem;
+    margin-top: 1rem;
+  }
+}
