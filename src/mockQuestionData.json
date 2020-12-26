@@ -1,0 +1,102 @@
+[
+    {
+        "id": 0,
+        "question": "My first dumb question ?",
+        "choices": [
+            {
+                "id": 0,
+                "rate": 3,
+                "content": "Is this really dumb",
+                "type": "radio"
+            },
+            {
+                "id": 1,
+                "rate": -4,
+                "content": "Kind of",
+                "type": "radio"
+            },
+            {
+                "id": 2,
+                "rate": 2,
+                "content": "Let's think about it.",
+                "type": "radio"
+            }
+        ],
+        "type": "GENERATE"
+    },
+    {
+        "id": 1,
+        "question": "Secondless dumbaay question?",
+        "choices": [
+            {
+                "id": 0,
+                "rate": 2,
+                "content": "No more than 2 rate.",
+                "type": "radio"
+            },
+            {
+                "id": 1,
+                "rate": -1,
+                "content": "Rate me again.",
+                "type": "radio"
+            }
+        ],
+        "type": "GENERATE"
+    },
+    {
+        "id": 2,
+        "question": "Lorem Ipsulum orem bla bla",
+        "choices": [
+            {
+                "id": 0,
+                "rate": -2,
+                "content": "do we really",
+                "type": "checkbox"
+            },
+            {
+                "id": 1,
+                "rate": 3,
+                "content": "need",
+                "type": "checkbox"
+            },
+            {
+                "id": 2,
+                "rate": 3,
+                "content": "answers",
+                "type": "checkbox"
+            },
+            {
+                "id": 3,
+                "rate": -2,
+                "content": "in our",
+                "type": "checkbox"
+            },
+            {
+                "id": 4,
+                "rate": 5,
+                "content": "lıfe",
+                "type": "checkbox"
+            }
+        ],
+        "type": "GENERATE"
+    },
+    {
+        "id": 3,
+        "question": "Last question for today",
+        "choices": [
+            {
+                "id": 0,
+                "rate": -2,
+                "content": "is it the last one",
+                "type": "checkbox"
+            },
+            {
+                "id": 1,
+                "rate": 2,
+                "content": "I think it is",
+                "type": "checkbox"
+            }
+        ],
+        "type": "GENERATE"
+    }
+]

@@ -1,7 +1,7 @@
 import React from 'react';
-import { QuestionGroup, Question } from '../question/Question';
+import { QuestionGroup, Question, QuestionGroupList } from '../question/Question';
 
-export default function SurveyGenerator() {
+export function SurveyGenerator() {
 
   const questions: Question[] = [];
 
@@ -14,4 +14,17 @@ export default function SurveyGenerator() {
     <button onClick={finishSurvey}>Finish Survey</button>
   </div>
   );
+}
+
+// If need to read this data dynamically use fs library instead of require.
+const mockQuestions = require("../../mockQuestionData.json");
+
+export function SurveyList() {
+  const questions: Question[] = mockQuestions;
+
+  return (
+    <div>
+      <QuestionGroupList questionList={questions}/>
+    </div>
+  )
 }
