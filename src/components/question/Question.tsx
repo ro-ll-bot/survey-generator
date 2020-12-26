@@ -1,23 +1,29 @@
 import { useEffect, useState } from 'react';
-import { Choice, ChoiceGroupView } from '../choice/Choice'
+import { Choice, ChoiceGroup } from '../choice/Choice'
 
-function getQuestionView(id: number, choice: Choice[],
-  questionInputHandler: (idx: number, data: string) => void) {
+export interface Question {
+  id: number;
+  choices: Choice[];
+  question: string;
+  type: "GENERATE" | "LIST";
+}
+
+function QuestionUI(question: Question,
+  questionEventHandler: (idx: number, data: string) => void) {
 
   return (
     <div>
-      <textarea onChange={e => questionInputHandler(id, e.target.value)}></textarea>
+      <textarea onChange={e => questionEventHandler(question.id, e.target.value)}></textarea>
       <span>lock</span>
-      <ChoiceGroupView choiceList={choice} />
+      <ChoiceGroup choiceList={question.choices} />
     </div>
   );
 }
-
 export interface QuestionProps {
   questionList: Question[];
 }
 
-export function QuestionGroupView(props: QuestionProps) {
+export function QuestionGroup(props: QuestionProps) {
 
   const [id, setId] = useState(0);
   const [questions, setQuestions] = useState<Question[]>(props.questionList);
@@ -31,7 +37,7 @@ export function QuestionGroupView(props: QuestionProps) {
   };
 
   const addNewQuestion = () => {
-    questions.push({id:id, question:"", choices: []});
+    questions.push({ id: id, question: "", choices: [], type: "GENERATE" });
     setId(id + 1);
     setQuestions(questions);
   }
@@ -39,17 +45,9 @@ export function QuestionGroupView(props: QuestionProps) {
   return (
     <div>
       {questions.map(question => {
-        return getQuestionView(question.id, question.choices, questionInputChange);
+        return QuestionUI(question, questionInputChange);
       })}
       <button onClick={addNewQuestion}>Add Question</button>
     </div>
   );
 }
-
-
-export interface Question {
-  id: number;
-  choices: Choice[];
-  question: string;
-}
-

@@ -1,3 +1,9 @@
+$main-color: rgb(255, 174, 0);
+$main-color-dark: darken($main-color, 10);
+$main-color-light: lighten($main-color, 30);
+
+
+
 .button {
   background-color: $main-color-light;
   border: 1px solid $main-color;
