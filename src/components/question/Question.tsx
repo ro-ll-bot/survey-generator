@@ -5,7 +5,7 @@ export interface Question {
   id: number;
   choices: Choice[];
   question: string;
-  type: "GENERATE" | "LIST";
+  type: string | "GENERATE" | "LIST";
 }
 
 function QuestionUI(question: Question,

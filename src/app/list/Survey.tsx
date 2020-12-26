@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Choice } from '../../components/choice/Choice';
 import { Question } from '../../components/question/Question';
+import questionList from '../../questions.json';
 
 
-export function Survey(questions: Question[]) {
-
-  const questionEventHandler = (idx: number, selectedChoiceList: Choice[]) => {
-    questions[idx].choices = selectedChoiceList;
-  }
+export function Survey(/*questions: Question[]*/) {
+  const questions: Question[] = questionList;
 
   return (
     <div className="question-container">
       <ol className="question-form">
         {questions.map((question) => {
-          return QuestionUI(question, questionEventHandler)
+          return QuestionUI(question)
         })}
       </ol>
       <button className="button">Send</button>
@@ -21,25 +19,38 @@ export function Survey(questions: Question[]) {
   )
 }
 
-function QuestionUI(question: Question,
-  questionEventHandler: (idx: number, selectedChoiceList: Choice[]) => void) {
+function QuestionUI(question: Question) {
+  let selectedChoices: Choice[] = [];
+
+  const selectChoice = (id: number) => {
+    if(!selectedChoices.includes(question.choices[id])) {
+      selectedChoices.push(question.choices[id]);
+    } else {
+      selectedChoices = selectedChoices.filter(choice => choice.id !== question.choices[id].id)
+      // it should have any notification like "you removed this choice"
+    }
+    console.log(selectedChoices);
+  };
 
   return (
-    <li className="question">
+    <li key={question.id} className="question">
       {question.question}
       <ul className="choice-container">
         {question.choices.map((choice) => {
-          return ChoiceUI(choice);
+          return ChoiceUI(choice, selectChoice);
         })}
       </ul>
     </li>
   );
 }
 
-function ChoiceUI(choice: Choice) {
+function ChoiceUI(
+  choice: Choice,
+  choiceHandler: (id: number) => void) {
+  
   return (
-    <li className="choice-list">
-      <button className="button choice">
+    <li key={choice.id} className="choice-list">
+      <button onClick={e => choiceHandler(choice.id)} className="button">
         {choice.content}
       </button>
     </li>
