@@ -1,10 +1,14 @@
 .button {
+  border: 1px solid #ffdf99;
   background-color: #ffdf99;
-  border: 1px solid #ffae00;
   border-radius: .5rem;
 }
 
 .button:hover {
+  background-color: #ffae00;
+}
+
+.button:active {
   background-color: #ffae00;
 }
 

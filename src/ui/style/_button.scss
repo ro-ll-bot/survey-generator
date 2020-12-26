@@ -5,11 +5,15 @@ $main-color-light: lighten($main-color, 30);
 
 
 .button {
+  border: 1px solid $main-color-light;
   background-color: $main-color-light;
-  border: 1px solid $main-color;
   border-radius: .5rem;
 
   &:hover {
+    background-color: $main-color;
+  }
+
+  &:active {
     background-color: $main-color;
   }
 }

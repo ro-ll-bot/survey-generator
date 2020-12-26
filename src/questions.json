@@ -1,0 +1,46 @@
+[
+  {
+    "id": 0,
+    "question": "Is it a Question?",
+    "choices": [
+      {
+        "id": 0,
+        "rate": 10,
+        "content": "Yes"
+      },
+      {
+        "id": 1,
+        "rate": 5,
+        "content": "Maybe"
+      },
+      {
+        "id": 2,
+        "rate": 1,
+        "content": "Not"
+      }
+    ],
+    "type": "GENERATE"
+  },
+  {
+    "id": 1,
+    "question": "Question?",
+    "choices": [
+      {
+        "id": 0,
+        "rate": 4,
+        "content": "Not"
+      },
+      {
+        "id": 1,
+        "rate": 5,
+        "content": "I don't know"
+      },
+      {
+        "id": 2,
+        "rate": 10,
+        "content": "Of course"
+      }
+    ],
+    "type": "GENERATE"
+  }
+]
