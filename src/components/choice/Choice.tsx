@@ -1,53 +1,57 @@
-import React from "react";
-
-const choiceView: (group: string, id: number) => JSX.Element = (group: string, id: number )=> (
-  <div>
-    <input type="number" name={group} id={`number_${id}`} className="choiceNumberInput" />
-    <input type="text" name={group} id={`text_${id}`} />
-  </div>
-);
-
-interface ChoiceGroupProps {
-  groupName: string;
-  isEditable: boolean;
-}
-
+import { useEffect, useState } from "react";
 
 export interface Choice {
+  id: number;
   rate: number;
   content: string | ImageBitmap;
 }
 
+function getChoiceViewUI(id: number, 
+  inputHandler: (idx:number, data:string)=>void,
+  rateHandler: (idx: number, data: number)=>void) {
+  
+  return (
+    <div>
+      <input type="number" onChange={e => rateHandler(id, parseInt(e.target.value))}/>
+      <input type="text"onChange={e => inputHandler(id, e.target.value)}/>
+    </div>
+  );
+}
 
-export class ChoicesGroupView extends React.Component<ChoiceGroupProps> {
-  choices: JSX.Element[] = [];
+export interface ChoiceProps {
+  choiceList: Choice[];
+}
 
-  state = {
-    choices: this.choices
-  }
+export function ChoiceGroupView(props: ChoiceProps) {
+  const [id, setId] = useState(0);
+  const [choices, setChoices] = useState<Choice[]>(props.choiceList);
 
-  addNewChoice = () => {
-    this.state.choices.push(choiceView(this.props.groupName, this.choices.length));
-    this.setState({ choices: this.state.choices });
+  useEffect(() => {
+    // render the screen when new choice added.
+  }, [choices]);
+
+  const updateChoiceInputData = (idx: number, data: string) => {
+    choices[idx].content = data;
   };
 
-  public getChoices(): Choice[] {
-    const choiceList:Choice[] = [];
-    // console.log("heyyo!");
-    for(let i=0; i<this.choices.length; i++) {
-      const choice: Choice = {
-        rate: i,
-        content: `content_${i}` 
-      };
-      choiceList.push(choice);
-    }
-    return choiceList;
-  }
+  const updateChoiceRateData = (idx: number, data: number) => {
+    choices[idx].rate = data;
+  };
 
-  render() {
-    return (<div>
-      {this.state.choices.map(elem => elem)}
-      <button onClick={this.addNewChoice}>Add Choice</button>
-    </div>);
-  }
+  const addNewChoice = () => {
+    choices.push({id:id, rate:0, content:""} as Choice);
+    setId(id + 1);
+    setChoices(choices);
+  };
+
+  return (
+    <div>
+      {choices.map(choice => {
+        return getChoiceViewUI(choice.id, updateChoiceInputData, updateChoiceRateData);
+      })}
+      <button onClick={addNewChoice}>Add Choice</button>
+    </div>
+  );
+
 }
+
