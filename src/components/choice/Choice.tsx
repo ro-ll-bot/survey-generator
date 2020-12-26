@@ -6,7 +6,7 @@ export interface Choice {
   content: string | ImageBitmap;
 }
 
-function getChoiceViewUI(id: number, 
+function getChoiceUI(id: number, 
   inputHandler: (idx:number, data:string)=>void,
   rateHandler: (idx: number, data: number)=>void) {
   
@@ -22,7 +22,7 @@ export interface ChoiceProps {
   choiceList: Choice[];
 }
 
-export function ChoiceGroupView(props: ChoiceProps) {
+export function ChoiceGroup(props: ChoiceProps) {
   const [id, setId] = useState(0);
   const [choices, setChoices] = useState<Choice[]>(props.choiceList);
 
@@ -47,11 +47,9 @@ export function ChoiceGroupView(props: ChoiceProps) {
   return (
     <div>
       {choices.map(choice => {
-        return getChoiceViewUI(choice.id, updateChoiceInputData, updateChoiceRateData);
+        return getChoiceUI(choice.id, updateChoiceInputData, updateChoiceRateData);
       })}
       <button onClick={addNewChoice}>Add Choice</button>
     </div>
   );
-
 }
-

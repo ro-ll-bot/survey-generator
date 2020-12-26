@@ -1,7 +1,7 @@
 import React from 'react';
-import { QuestionGroupView, Question } from '../question/Question';
+import { QuestionGroup, Question } from '../question/Question';
 
-export default function ExamGeneratorView() {
+export default function SurveyGenerator() {
 
   const questions: Question[] = [];
 
@@ -10,7 +10,7 @@ export default function ExamGeneratorView() {
   };
 
   return (<div>
-    <QuestionGroupView questionList={questions}></QuestionGroupView>
+    <QuestionGroup questionList={questions}></QuestionGroup>
     <button onClick={finishSurvey}>Finish Survey</button>
   </div>
   );

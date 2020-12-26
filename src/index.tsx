@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Survey from './app/list/Survey';
-import ExamGeneratorView from './components/survey/Survey';
 import reportWebVitals from './reportWebVitals';
+import SurveyGenerator from './components/survey/Survey';
 import "./css/main.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Survey />
+    <SurveyGenerator />
   </React.StrictMode>,
   document.getElementById('root')
 );

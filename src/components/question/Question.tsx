@@ -1,23 +1,28 @@
 import { useEffect, useState } from 'react';
-import { Choice, ChoiceGroupView } from '../choice/Choice'
+import { Choice, ChoiceGroup } from '../choice/Choice'
 
-function getQuestionView(id: number, choice: Choice[],
+export interface Question {
+  id: number;
+  choices: Choice[];
+  question: string;
+}
+
+function getQuestionUI(id: number, choice: Choice[],
   questionInputHandler: (idx: number, data: string) => void) {
 
   return (
     <div>
       <textarea onChange={e => questionInputHandler(id, e.target.value)}></textarea>
       <span>lock</span>
-      <ChoiceGroupView choiceList={choice} />
+      <ChoiceGroup choiceList={choice} />
     </div>
   );
 }
-
 export interface QuestionProps {
   questionList: Question[];
 }
 
-export function QuestionGroupView(props: QuestionProps) {
+export function QuestionGroup(props: QuestionProps) {
 
   const [id, setId] = useState(0);
   const [questions, setQuestions] = useState<Question[]>(props.questionList);
@@ -39,17 +44,9 @@ export function QuestionGroupView(props: QuestionProps) {
   return (
     <div>
       {questions.map(question => {
-        return getQuestionView(question.id, question.choices, questionInputChange);
+        return getQuestionUI(question.id, question.choices, questionInputChange);
       })}
       <button onClick={addNewQuestion}>Add Question</button>
     </div>
   );
 }
-
-
-export interface Question {
-  id: number;
-  choices: Choice[];
-  question: string;
-}
-
