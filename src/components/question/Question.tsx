@@ -5,16 +5,17 @@ export interface Question {
   id: number;
   choices: Choice[];
   question: string;
+  type: "GENERATE" | "LIST";
 }
 
-function getQuestionUI(id: number, choice: Choice[],
-  questionInputHandler: (idx: number, data: string) => void) {
+function QuestionUI(question: Question,
+  questionEventHandler: (idx: number, data: string) => void) {
 
   return (
     <div>
-      <textarea onChange={e => questionInputHandler(id, e.target.value)}></textarea>
+      <textarea onChange={e => questionEventHandler(question.id, e.target.value)}></textarea>
       <span>lock</span>
-      <ChoiceGroup choiceList={choice} />
+      <ChoiceGroup choiceList={question.choices} />
     </div>
   );
 }
@@ -36,7 +37,7 @@ export function QuestionGroup(props: QuestionProps) {
   };
 
   const addNewQuestion = () => {
-    questions.push({id:id, question:"", choices: []});
+    questions.push({ id: id, question: "", choices: [], type: "GENERATE" });
     setId(id + 1);
     setQuestions(questions);
   }
@@ -44,7 +45,7 @@ export function QuestionGroup(props: QuestionProps) {
   return (
     <div>
       {questions.map(question => {
-        return getQuestionUI(question.id, question.choices, questionInputChange);
+        return QuestionUI(question, questionInputChange);
       })}
       <button onClick={addNewQuestion}>Add Question</button>
     </div>

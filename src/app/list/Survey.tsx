@@ -1,106 +1,47 @@
 import React, { useState } from 'react';
+import { Choice } from '../../components/choice/Choice';
+import { Question } from '../../components/question/Question';
 
 
-interface Question {
-  id: number,
-  content: string,
-  choices: Choice[]
-}
+export function Survey(questions: Question[]) {
 
-interface Choice {
-  id: number,
-  content: string,
-  type?: string,
-  rate?: number
-}
-
-function Survey() {
-  const questionList: Question[] = [
-    {
-      id: 1,
-      content: "is it a question?",
-      choices: [
-        {
-          id: 1,
-          content: "choice A",
-          rate: 10
-        },
-        {
-          id: 2,
-          content: "choice B",
-          rate: 5
-        },
-        {
-          id: 3,
-          content: "choice C"
-        }
-      ]
-    },
-    {
-      id: 2,
-      content: "is it a question?",
-      choices: [
-        {
-          id: 1,
-          content: "choice A",
-          rate: 10
-        },
-        {
-          id: 2,
-          content: "choice B",
-          rate: 5
-        },
-        {
-          id: 3,
-          content: "choice C"
-        }
-      ]
-    },
-    {
-      id: 3,
-      content: "is it a question?",
-      choices: [
-        {
-          id: 1,
-          content: "choice A",
-          rate: 10
-        },
-        {
-          id: 2,
-          content: "choice B",
-          rate: 5
-        },
-        {
-          id: 3,
-          content: "choice C"
-        }
-      ]
-    }
-  ]
-
-  const [questions, setQuestions] = useState(questionList);
+  const questionEventHandler = (idx: number, selectedChoiceList: Choice[]) => {
+    questions[idx].choices = selectedChoiceList;
+  }
 
   return (
     <div className="question-container">
       <ol className="question-form">
-        {questions.map((question) => (
-          <li className="question">
-            {question.content}
-            <ul className="choice-container">
-              {question.choices.map((choice) => (
-                <li className="choice-list"> 
-                  <button className="button choice">
-                  {choice.content}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
+        {questions.map((question) => {
+          return QuestionUI(question, questionEventHandler)
+        })}
       </ol>
       <button className="button">Send</button>
     </div>
   )
 }
 
-export default Survey;
+function QuestionUI(question: Question,
+  questionEventHandler: (idx: number, selectedChoiceList: Choice[]) => void) {
+
+  return (
+    <li className="question">
+      {question.question}
+      <ul className="choice-container">
+        {question.choices.map((choice) => {
+          return ChoiceUI(choice);
+        })}
+      </ul>
+    </li>
+  );
+}
+
+function ChoiceUI(choice: Choice) {
+  return (
+    <li className="choice-list">
+      <button className="button choice">
+        {choice.content}
+      </button>
+    </li>
+  )
+}

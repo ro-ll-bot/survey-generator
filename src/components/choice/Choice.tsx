@@ -6,7 +6,7 @@ export interface Choice {
   content: string | ImageBitmap;
 }
 
-function getChoiceUI(id: number, 
+function ChoiceUI(id: number, 
   inputHandler: (idx:number, data:string)=>void,
   rateHandler: (idx: number, data: number)=>void) {
   
@@ -47,7 +47,7 @@ export function ChoiceGroup(props: ChoiceProps) {
   return (
     <div>
       {choices.map(choice => {
-        return getChoiceUI(choice.id, updateChoiceInputData, updateChoiceRateData);
+        return ChoiceUI(choice.id, updateChoiceInputData, updateChoiceRateData);
       })}
       <button onClick={addNewChoice}>Add Choice</button>
     </div>
