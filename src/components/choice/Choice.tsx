@@ -1,25 +1,51 @@
 import { useEffect, useState } from "react";
 
+export enum ChoiceType {
+  CHOICE_SINGLE = "radio",
+  CHOICE_MULTIPLE = "checkbox"
+}
+
+interface ChoiceProps {
+  choiceList: Choice[];
+}
+
 export interface Choice {
   id: number;
   rate: number;
   content: string | ImageBitmap;
+  type?: ChoiceType
 }
 
-function ChoiceUI(id: number, 
-  inputHandler: (idx:number, data:string)=>void,
-  rateHandler: (idx: number, data: number)=>void) {
-  
+function ChoiceUI(id: number,
+  inputHandler: (idx: number, data: string) => void,
+  rateHandler: (idx: number, data: number) => void) {
+
   return (
     <div>
-      <input type="number" onChange={e => rateHandler(id, parseInt(e.target.value))}/>
-      <input type="text"onChange={e => inputHandler(id, e.target.value)}/>
+      <input type="number" onChange={e => rateHandler(id, parseInt(e.target.value))} />
+      <input type="text" onChange={e => inputHandler(id, e.target.value)} />
     </div>
   );
 }
 
-export interface ChoiceProps {
-  choiceList: Choice[];
+
+export function ChoiceGroupList(props: ChoiceProps) {
+
+  // const [choiceStates, setChoiceStates] = useState<boolean[]>([]);
+
+  const choiceUI = (choice: Choice) => {
+    return (
+      <div className="choice">
+        <input type={choice.type} />
+        <p>{choice.content}</p>
+      </div>
+    )
+  };
+
+  return (
+    <div >
+      {props.choiceList.map(choice => choiceUI(choice))}
+    </div>);
 }
 
 export function ChoiceGroup(props: ChoiceProps) {
@@ -39,7 +65,7 @@ export function ChoiceGroup(props: ChoiceProps) {
   };
 
   const addNewChoice = () => {
-    choices.push({id:id, rate:0, content:""} as Choice);
+    choices.push({ id: id, rate: 0, content: "" } as Choice);
     setId(id + 1);
     setChoices(choices);
   };

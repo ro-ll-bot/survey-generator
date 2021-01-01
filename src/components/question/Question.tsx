@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Choice, ChoiceGroup } from '../choice/Choice'
+import { Choice, ChoiceGroup, ChoiceGroupList } from '../choice/Choice'
 
 export interface Question {
   id: number;
@@ -50,4 +50,23 @@ export function QuestionGroup(props: QuestionProps) {
       <button onClick={addNewQuestion}>Add Question</button>
     </div>
   );
+}
+
+
+export function QuestionGroupList(props: QuestionProps) {
+
+  const QuestionListUI = (question: Question) => {
+    return (
+      <div className="question-container">
+        <p>{question.question}</p>
+        <ChoiceGroupList choiceList={question.choices}></ChoiceGroupList>
+      </div>
+    );
+  };
+
+  return (
+    <div>
+      {props.questionList.map(question => QuestionListUI(question))}
+    </div>
+  )
 }

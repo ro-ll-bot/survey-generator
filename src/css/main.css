@@ -25,6 +25,11 @@ body {
   width: 70%;
 }
 
+.choice {
+  display: flex;
+  align-items: center;
+}
+
 .choice-list {
   min-height: 2rem;
   margin-top: 1rem;
