@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "owner": "Yasko",
+    "title": "First Survey",
+    "description": "Lorem Ipsulum orem bla bla",
+    "questionCount": 10,
+    "status": "NEW"
+  },
+  {
+    "id": 2,
+    "owner": "Yukso",
+    "title": "Second Survey",
+    "description": "Lorem Ipsulum orem bla bla",
+    "questionCount": 5,
+    "status": "VIEWED"
+  },
+  {
+    "id": 3,
+    "owner": "Yasin",
+    "title": "Third Survey",
+    "description": "Lorem Ipsulum orem bla bla",
+    "questionCount": 7,
+    "status": "SOLVED"
+  },
+  {
+    "id": 4,
+    "owner": "Bilgin",
+    "title": "XMAS Survey",
+    "description": "Lorem Ipsulum orem bla bla",
+    "questionCount": 12,
+    "status": "NEW"
+  }
+]
