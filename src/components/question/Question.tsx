@@ -59,7 +59,7 @@ export function QuestionGroupList(props: QuestionProps) {
     return (
       <div className="question-container">
         <p>{question.question}</p>
-        <ChoiceGroupList choiceList={question.choices}></ChoiceGroupList>
+        <ChoiceGroupList choiceList={question.choices} />
       </div>
     );
   };
