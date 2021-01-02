@@ -1,6 +1,13 @@
 import React from 'react';
 import { QuestionGroup, Question, QuestionGroupList } from '../question/Question';
 
+
+export enum SurveyStatus {
+  NEW = "New",
+  VIEWED = "Viewed",
+  SOLVED = "Solved"
+}
+
 export interface Survey {
   id: number;
   owner: string;
@@ -8,7 +15,7 @@ export interface Survey {
   description: string;
   questionCount: number;
   image?: string;
-  status?: "NEW" | "VIEWED" | "SOLVED";
+  status?: SurveyStatus;
 }
 
 export interface SurveyProps {
