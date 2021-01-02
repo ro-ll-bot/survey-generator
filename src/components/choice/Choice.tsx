@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Question, QuestionProps } from "../question/Question";
 
 export enum ChoiceType {
   CHOICE_SINGLE = "radio",
@@ -11,9 +12,10 @@ interface ChoiceProps {
 
 export interface Choice {
   id: number;
+  groupId: string,
   rate: number;
   content: string | ImageBitmap;
-  type?: ChoiceType
+  type?: ChoiceType,
 }
 
 function ChoiceUI(id: number,
@@ -36,7 +38,7 @@ export function ChoiceGroupList(props: ChoiceProps) {
   const choiceUI = (choice: Choice) => {
     return (
       <div className="choice">
-        <input type={choice.type} />
+        <input type={choice.type} name={choice.groupId}/>
         <p>{choice.content}</p>
       </div>
     )

@@ -1,6 +1,27 @@
 import React from 'react';
 import { QuestionGroup, Question, QuestionGroupList } from '../question/Question';
 
+
+export enum SurveyStatus {
+  NEW = "New",
+  VIEWED = "Viewed",
+  SOLVED = "Solved"
+}
+
+export interface Survey {
+  id: number;
+  owner: string;
+  title: string;
+  description: string;
+  questionCount: number;
+  image?: string;
+  status?: SurveyStatus;
+}
+
+export interface SurveyProps {
+  surveyList: Survey[];
+}
+
 export function SurveyGenerator() {
 
   const questions: Question[] = [];
@@ -24,7 +45,32 @@ export function SurveyList() {
 
   return (
     <div>
-      <QuestionGroupList questionList={questions}/>
+      <QuestionGroupList questionList={questions} />
+    </div>
+  )
+}
+
+export function SurveyTimeLine(props: SurveyProps) {
+    return (
+      <div className="survey-timeline">
+        {props.surveyList.map((survey) => {
+          return SurveyTimeLineCard(survey);
+        })}
+      </div>
+    )
+}
+
+function SurveyTimeLineCard(survey: Survey) {
+  return (
+    <div className="survey-timeline-card">
+      <span>{survey.status}</span>
+      <img src={survey.image} alt={survey.title} />
+      <h3>{survey.title}</h3>
+      <p>{survey.description}</p>
+      <div>
+        <span>{survey.owner}</span>
+        <span>{survey.questionCount}</span>
+      </div>
     </div>
   )
 }

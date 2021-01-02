@@ -5,20 +5,18 @@
     justify-content: center;
     align-items: center;
     width: 70%;
-   
   }
-
 }
 
 .choice {
-
-  &-container {
-    
-
-  }
 
   &-list {
     min-height: 2rem;
     margin-top: 1rem;
   }
+}
+
+.survey-timeline {
+  display: grid;
+  grid-template-columns: 2fr, 2fr, 2fr;
 }
