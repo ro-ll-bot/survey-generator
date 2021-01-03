@@ -8,6 +8,17 @@ export enum SurveyStatus {
   SOLVED = "Solved"
 }
 
+export interface Survey {
+  id: number;
+  owner: string;
+  title: string;
+  description: string;
+  questionCount: number;
+  questions: Question[];
+  image?: string;
+  status?: SurveyStatus;
+}
+
 export interface SurveyTimelineCardData {
   id: number;
   owner: string;
@@ -40,7 +51,7 @@ export function SurveyGenerator() {
 // If need to read this data dynamically use fs library instead of require.
 const mockQuestions = require("../../mockQuestionData.json");
 
-export function SurveyList() {
+export function SurveyDetail(survey: Survey) {
   const questions: Question[] = mockQuestions;
 
   return (
