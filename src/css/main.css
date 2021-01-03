@@ -41,6 +41,12 @@ body {
       grid-template-columns: 2fr, 2fr, 2fr;
 }
 
+.survey-timeline-card {
+  border: 3px solid black;
+  padding: 15px;
+  margin-top: 10px;
+}
+
 .question-container {
   border: 1px solid #ffae00;
   border-radius: .5rem;
