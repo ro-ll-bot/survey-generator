@@ -13,10 +13,8 @@ export interface Survey {
   owner: string;
   title: string;
   description: string;
-  questionCount: number;
   questions: Question[];
   image?: string;
-  status?: SurveyStatus;
 }
 
 export interface SurveyTimelineCardData {
@@ -51,12 +49,28 @@ export function SurveyGenerator() {
 // If need to read this data dynamically use fs library instead of require.
 const mockQuestions = require("../../mockQuestionData.json");
 
-export function SurveyDetail(survey: Survey) {
-  const questions: Question[] = mockQuestions;
+interface SurveyDetailProps {
+  survey: Survey;
+}
+
+export function SurveyDetail(props: SurveyDetailProps) {
+
+  const survey = props.survey;
+
+  const finishSurvey = () => {
+    console.log('Finished survey.');
+  };
 
   return (
     <div>
-      <QuestionGroupList questionList={questions} />
+      <h2>{survey.title}</h2>
+      <img src={survey.image} alt={survey.title} />
+      <p>{survey.description}</p>
+      <QuestionGroupList questionList={survey.questions} />
+      <button onClick={finishSurvey}>Finish Survey</button>
+      <br/>
+      <span>{`Author ${survey.owner}`}</span>
+      {/** Maybe comments section or vice versa */}
     </div>
   )
 }

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import {SurveyGenerator, SurveyList} from './components/survey/Survey';
 import "./css/main.css";
-import { TimeLine } from './app/TimeLine';
+import { TimeLine} from './app/TimeLine';
+import { SurveyDetailPage } from './app/SurveyDetail';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TimeLine />
+    <SurveyDetailPage/>
   </React.StrictMode>,
   document.getElementById('root')
 );
