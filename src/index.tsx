@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import {SurveyGenerator, SurveyList} from './components/survey/Survey';
 import "./css/main.css";
-import { TimeLine } from './app/TimeLine';
+import { Home } from './app/homepage/Home';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TimeLine />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );

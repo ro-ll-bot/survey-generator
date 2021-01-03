@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { QuestionGroup, Question, QuestionGroupList } from '../question/Question';
 
 
@@ -61,8 +62,14 @@ export function SurveyTimeLine(props: SurveyProps) {
 }
 
 function SurveyTimeLineCard(survey: Survey) {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/survey/${survey.id}`);
+  }
+
   return (
-    <div className="survey-timeline-card">
+    <div className="survey-timeline-card" onClick={handleClick}>
       <span>{survey.status}</span>
       <img src={survey.image} alt={survey.title} />
       <h3>{survey.title}</h3>
