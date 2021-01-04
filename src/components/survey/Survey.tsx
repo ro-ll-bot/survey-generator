@@ -8,7 +8,7 @@ export enum SurveyStatus {
   SOLVED = "Solved"
 }
 
-export interface Survey {
+export interface SurveyTimelineCardData {
   id: number;
   owner: string;
   title: string;
@@ -19,7 +19,7 @@ export interface Survey {
 }
 
 export interface SurveyProps {
-  surveyList: Survey[];
+  surveyList: SurveyTimelineCardData[];
 }
 
 export function SurveyGenerator() {
@@ -50,26 +50,29 @@ export function SurveyList() {
   )
 }
 
-export function SurveyTimeLine(props: SurveyProps) {
+export function SurveyTimeline(props: SurveyProps) {
     return (
       <div className="survey-timeline">
         {props.surveyList.map((survey) => {
-          return SurveyTimeLineCard(survey);
+          return SurveyTimelineCard(survey);
         })}
       </div>
     )
 }
 
-function SurveyTimeLineCard(survey: Survey) {
+function SurveyTimelineCard(survey: SurveyTimelineCardData) {
   return (
     <div className="survey-timeline-card">
-      <span>{survey.status}</span>
       <img src={survey.image} alt={survey.title} />
-      <h3>{survey.title}</h3>
+      <h3><a href="#">{survey.title}</a></h3>
       <p>{survey.description}</p>
       <div>
-        <span>{survey.owner}</span>
-        <span>{survey.questionCount}</span>
+        <span>{`Author ${survey.owner}`}</span>
+        <br/>
+        <span>{`The ${survey.title} has ${survey.questionCount} questions.`}</span>
+        <br/>
+        <span>{survey.status}</span>
+        <br/>
       </div>
     </div>
   )

@@ -5,7 +5,7 @@
     "title": "First Survey",
     "description": "Lorem Ipsulum orem bla bla",
     "questionCount": 10,
-    "status": "NEW"
+    "status": "New"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "title": "Second Survey",
     "description": "Lorem Ipsulum orem bla bla",
     "questionCount": 5,
-    "status": "VIEWED"
+    "status": "Viewed"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "title": "Third Survey",
     "description": "Lorem Ipsulum orem bla bla",
     "questionCount": 7,
-    "status": "SOLVED"
+    "status": "Solved"
   },
   {
     "id": 4,
@@ -29,6 +29,6 @@
     "title": "XMAS Survey",
     "description": "Lorem Ipsulum orem bla bla",
     "questionCount": 12,
-    "status": "NEW"
+    "status": "New"
   }
 ]
