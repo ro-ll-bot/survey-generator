@@ -1,18 +1,14 @@
 import React from 'react'
-import { Survey, SurveyTimeLine } from '../components/survey/Survey'
-
-interface TimeLine {
-  surveyList: Survey[];
-}
+import { SurveyTimelineCardData, SurveyTimeline } from '../components/survey/Survey'
 
 const mockSurveys = require("../mockSurveyData.json");
 
 export function TimeLine() {
-  const surveyList: Survey[] = mockSurveys;
+  const surveyList: SurveyTimelineCardData[] = mockSurveys;
 
   return (
     <div>
-      <SurveyTimeLine surveyList={surveyList} />
+      <SurveyTimeline surveyList={surveyList} />
     </div>
   )
 }
