@@ -25,7 +25,6 @@ export function Navbar() {
         }];
 
     return (
-        <div>
             <div className="nav">
                 <a href="#" className="logo" >Survey Genarator</a>
                 {navbarItems.map((item)=>{
@@ -34,14 +33,6 @@ export function Navbar() {
                     else
                         return <a href={item.url}>{item.description}</a>
                 })}
-
-                {/* <a className="active" href="#">Survey List</a>
-                <a href="#">Create Survey</a>
-                <a href="#">My Surveys</a>
-                <a href="#">Profile</a>  */}
-
             </div>
-            <br />
-        </div>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Navbar } from '../components/navbar/Navbar';
 import { Survey, SurveyTimeLine } from '../components/survey/Survey'
 
 interface TimeLine {
@@ -12,6 +13,8 @@ export function TimeLine() {
 
   return (
     <div>
+      <Navbar/>
+      <br/>
       <SurveyTimeLine surveyList={surveyList} />
     </div>
   )
