@@ -64,6 +64,7 @@ function SurveyTimelineCard(survey: SurveyTimelineCardData) {
   return (
     <div className="survey-timeline-card">
       <img src={survey.image} alt={survey.title} />
+      <hr/>
       <h3><a href="#">{survey.title}</a></h3>
       <p>{survey.description}</p>
       <div>
