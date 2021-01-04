@@ -11,7 +11,7 @@ export function TimeLine() {
     <div>
       <Navbar/>
       <br/>
-      <SurveyTimeLine surveyList={surveyList} />
+      <SurveyTimeline surveyList={surveyList} />
     </div>
   )
 }
