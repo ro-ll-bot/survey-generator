@@ -1,5 +1,4 @@
 import React from 'react'
-import { Navbar } from '../components/navbar/Navbar';
 import { SurveyTimelineCardData, SurveyTimeline } from '../components/survey/Survey'
 
 const mockSurveys = require("../mockSurveyData.json");
@@ -9,8 +8,6 @@ export function TimeLine() {
 
   return (
     <div>
-      <Navbar/>
-      <br/>
       <SurveyTimeline surveyList={surveyList} />
     </div>
   )
