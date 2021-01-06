@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+
 interface NavbarItemData {
     url: string;
     description: string;
@@ -5,39 +8,37 @@ interface NavbarItemData {
 }
 
 function NavbarItem(item: NavbarItemData) {
-    if (item.isActive)
-        return <a className="active" href={item.url}>{item.description}</a>
-    else
-        return <a href={item.url}>{item.description}</a>
+    const customClassName = item.isActive ? "active" : "inactive";
+    return <Link className={customClassName} to={item.url}>{item.description}</Link>
 }
 
 export function Navbar() {
 
     const navbarItems =
         [{
-            "url": "#SurveyList",
+            "url": "/",
             "description": "Survey List",
             "isActive": true
         },
         {
-            "url": "#CreateSurvey",
+            "url": "/create-survey",
             "description": "Create Survey",
             "isActive": false
         },
         {
-            "url": "#MySurveys",
+            "url": "/MySurveys",
             "description": "My Surveys",
             "isActive": false
         },
         {
-            "url": "#Profile",
+            "url": "/Profile",
             "description": "Profile",
             "isActive": false
         }];
 
     return (
         <div className="nav">
-            <a href="#" className="logo" >Survey Genarator</a>
+            <Link to="/" className="logo">Survey Genarator</Link>
             {navbarItems.map((item) => {
                 return NavbarItem(item);
             })}
