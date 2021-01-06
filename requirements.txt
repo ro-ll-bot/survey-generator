@@ -1,0 +1,7 @@
+Create different question types.
+Expected question types:
+ - Rated questions.
+ - Linked questions.
+ * Multiple choice questions.
+
+Link the answers to the questions with thumbnails.
