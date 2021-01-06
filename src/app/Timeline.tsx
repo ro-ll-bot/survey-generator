@@ -9,7 +9,6 @@ export function Timeline() {
 
   return (
     <div>
-      <Navbar/>
       <SurveyTimeline surveyList={surveyList} />
     </div>
   )

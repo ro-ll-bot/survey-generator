@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { QuestionGroup, Question, QuestionGroupList } from '../question/Question';
+import { SURVEY_BASE_URL } from './utils/SurveyConstants';
 
 
 export enum SurveyStatus {
@@ -51,29 +53,30 @@ export function SurveyList() {
 }
 
 export function SurveyTimeline(props: SurveyProps) {
-    return (
-      <div className="survey-timeline">
-        {props.surveyList.map((survey) => {
-          return SurveyTimelineCard(survey);
-        })}
-      </div>
-    )
+  return (
+    <div className="survey-timeline">
+      {props.surveyList.map((survey) => {
+        return SurveyTimelineCard(survey);
+      })}
+    </div>
+  )
 }
 
 function SurveyTimelineCard(survey: SurveyTimelineCardData) {
+
   return (
     <div className="survey-timeline-card">
       <img src={survey.image} alt={survey.title} />
-      <hr/>
-      <h3><a href="#">{survey.title}</a></h3>
+      <hr />
+      <h3><Link to={`${SURVEY_BASE_URL}/${survey.id}`}>{survey.title}</Link></h3>
       <p>{survey.description}</p>
       <div>
         <span>{`Author ${survey.owner}`}</span>
-        <br/>
+        <br />
         <span>{`The ${survey.title} has ${survey.questionCount} questions.`}</span>
-        <br/>
+        <br />
         <span>{survey.status}</span>
-        <br/>
+        <br />
       </div>
     </div>
   )

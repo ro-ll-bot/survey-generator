@@ -1,7 +1,10 @@
 .nav {
     background-color: #333;
     overflow: hidden;
-    border-radius: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
   }
   
   .nav a {

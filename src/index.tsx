@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import "./css/main.css";
-import { Timeline } from './app/Timeline';
+import { Home } from './app/home/Home';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Timeline />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );
