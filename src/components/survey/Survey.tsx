@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { QuestionGroup, Question, QuestionGroupList } from '../question/Question';
+import { QuestionGroup, QuestionGroupList } from '../question/Question';
+import { Question } from '../question/Model';
 import { SURVEY_BASE_URL } from './utils/SurveyConstants';
 
 

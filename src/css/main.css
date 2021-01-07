@@ -48,8 +48,35 @@ body {
 }
 
 .question-container {
-  border: 1px solid #ffae00;
-  border-radius: .5rem;
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 1rem;
+}
+
+.question-content {
+  width: 70%;
+  height: 3rem;
+  border-radius: 0.5rem;
+  font-family: 'Roboto Mono Regular';
+}
+
+.question-content:focus {
+  outline: none;
+  background-origin: padding-box;
+  padding: 0.5rem;
+  border: solid silver 0.1rem;
+  -webkit-box-shadow: 0.5px 0.5px;
+          box-shadow: 0.5px 0.5px;
+}
+
+.question-img {
+  margin-bottom: 1rem;
+  padding: 0.2rem;
+}
+
+.question-img:hover {
+  src: '../../ui/assets/unlock.png';
 }
 
 .nav {
@@ -83,5 +110,52 @@ body {
 .nav .logo:hover {
   background-color: #333;
   color: darkorange;
+}
+
+.choice-ans {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.choice-ans-linked {
+  width: 8%;
+  margin-left: -2rem;
+  height: 2rem;
+  background-color: antiquewhite;
+  font-family: 'Roboto Mono Medium';
+  border-radius: 0.5rem;
+  border: solid black 1px;
+  margin-right: 1rem;
+}
+
+.choice-ans-linked:focus {
+  outline: none;
+  background-origin: padding-box;
+  padding: 0.5rem;
+  border: solid silver 0.1rem;
+  -webkit-box-shadow: 0.5px 0.5px;
+          box-shadow: 0.5px 0.5px;
+}
+
+.choice-ans-rated {
+  height: 2rem;
+}
+
+.choice-content {
+  height: 2rem;
+  width: 60%;
+  font-family: 'Roboto Mono Medium';
+  border-radius: 0.5rem;
+  margin-bottom: -1rem;
+}
+
+.choice-content:focus {
+  outline: none;
+  background-origin: padding-box;
+  padding: 0.5rem;
+  border: solid silver 0.1rem;
+  -webkit-box-shadow: 0.5px 0.5px;
+          box-shadow: 0.5px 0.5px;
 }
 /*# sourceMappingURL=main.css.map */

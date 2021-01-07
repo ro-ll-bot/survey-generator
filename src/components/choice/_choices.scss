@@ -1,0 +1,47 @@
+.choice {
+
+    &-ans {
+        width: 100%;
+        display: block;
+        text-align: center;
+
+        &-linked {
+            width: 8%;
+            margin-left: -2rem;
+            height: 2rem;
+            background-color: antiquewhite;    
+            font-family: 'Roboto Mono Medium';
+            border-radius: 0.5rem;
+            border: solid black 1px;
+            margin-right: 1rem;
+
+            &:focus{
+                outline: none;
+                background-origin: padding-box;
+                padding: 0.5rem;
+                border: solid silver 0.1rem;
+                box-shadow: 0.5px 0.5px; 
+            }
+        }
+
+        &-rated {
+            height: 2rem;
+        }
+    }
+
+    &-content {
+        height: 2rem;
+        width: 60%;
+        font-family: 'Roboto Mono Medium';
+        border-radius: 0.5rem;
+        margin-bottom: -1rem;
+
+        &:focus{
+            outline: none;
+            background-origin: padding-box;
+            padding: 0.5rem;
+            border: solid silver 0.1rem;
+            box-shadow: 0.5px 0.5px; 
+        }
+    }
+}

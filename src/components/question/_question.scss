@@ -1,7 +1,33 @@
 .question {
 
   &-container {
-    border: 1px solid $main-color;
-    border-radius: .5rem;
+      width: 100%;
+      display: block;
+      text-align: center;
+      padding: 1rem;
+  }
+
+  &-content {
+    width: 70%;
+    height: 3rem;
+    border-radius: 0.5rem;
+    font-family: 'Roboto Mono Regular';
+
+    &:focus{
+      outline: none;
+      background-origin: padding-box;
+      padding: 0.5rem;
+      border: solid silver 0.1rem;
+      box-shadow: 0.5px 0.5px; 
+    }
+
+  }
+
+  &-img {
+    margin-bottom: 1rem;
+    padding: 0.2rem;
+    &:hover {
+      src: '../../ui/assets/unlock.png';
+    }
   }
 }
