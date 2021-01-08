@@ -17,3 +17,18 @@ $main-color-light: lighten($main-color, 30);
     background-color: $main-color;
   }
 }
+
+.add-item {
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #4CAF50;
+  -webkit-transition-duration: 0.4s; // safari
+  transition-duration: 0.7s;
+
+  &:hover {
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+}

@@ -12,6 +12,22 @@
   background-color: #ffae00;
 }
 
+.add-item {
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #4CAF50;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.7s;
+}
+
+.add-item:hover {
+  -webkit-box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
 body {
   display: -ms-grid;
   display: grid;
@@ -55,16 +71,20 @@ body {
 }
 
 .question-content {
+  resize: none;
   width: 70%;
-  height: 3rem;
-  border-radius: 0.5rem;
-  font-family: 'Roboto Mono Regular';
+  height: 6rem;
+  border-style: none none none double;
+  border-width: 0.3rem;
+  padding: 0.5rem;
+  font-family: 'Times New Roman';
+  font-size: x-large;
 }
 
 .question-content:focus {
   outline: none;
   background-origin: padding-box;
-  padding: 0.5rem;
+  padding: 0.6rem;
   border: solid silver 0.1rem;
   -webkit-box-shadow: 0.5px 0.5px;
           box-shadow: 0.5px 0.5px;
@@ -73,10 +93,6 @@ body {
 .question-img {
   margin-bottom: 1rem;
   padding: 0.2rem;
-}
-
-.question-img:hover {
-  src: '../../ui/assets/unlock.png';
 }
 
 .nav {
@@ -116,23 +132,27 @@ body {
   width: 100%;
   display: block;
   text-align: center;
+  margin-left: -1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 
 .choice-ans-linked {
   width: 8%;
-  margin-left: -2rem;
-  height: 2rem;
+  margin: 0;
   background-color: antiquewhite;
   font-family: 'Roboto Mono Medium';
+  font-size: medium;
   border-radius: 0.5rem;
   border: solid black 1px;
   margin-right: 1rem;
+  padding: 0.5rem;
+  vertical-align: middle;
 }
 
 .choice-ans-linked:focus {
   outline: none;
   background-origin: padding-box;
-  padding: 0.5rem;
   border: solid silver 0.1rem;
   -webkit-box-shadow: 0.5px 0.5px;
           box-shadow: 0.5px 0.5px;
@@ -143,11 +163,13 @@ body {
 }
 
 .choice-content {
-  height: 2rem;
   width: 60%;
-  font-family: 'Roboto Mono Medium';
+  font-family: 'Times New Roman';
+  font-size: large;
   border-radius: 0.5rem;
-  margin-bottom: -1rem;
+  padding: 0.6rem;
+  height: 3rem;
+  vertical-align: middle;
 }
 
 .choice-content:focus {

@@ -19,7 +19,7 @@ function ChoiceLinkedUi(choice: Choice,
     );
 }
 
-function ChoiceRatedUi(choice: Choice,
+function ChoiceRatedUi(choice: Choice, 
   updateAns: (idx: number, data: number) => void,
   updateContent: (idx: number, data: string) => void) {
 
@@ -54,15 +54,17 @@ export default function CreateChoiceGroup(props: ChoiceProps) {
 
     const dynamicChoiceUi = (choice: Choice) => {
         if(QuestionType.LINKED === props.type)
-            return ChoiceLinkedUi(choice, updateAnswer, updateContent);
+            return ChoiceLinkedUi(choice,updateAnswer, updateContent);
         if(QuestionType.RATED === props.type)
-            return ChoiceRatedUi(choice, updateAnswer, updateContent);
+            return ChoiceRatedUi(choice,updateAnswer, updateContent);
     };
 
+    const pointerEvents = props.editable?'auto':'none'
+
     return (
-        <div>
+        <div style={{pointerEvents: pointerEvents}}>
             {choices.map(choice => dynamicChoiceUi(choice))}
-            <button onClick={addNewChoice}>Add Choice</button>
+            <button className="add-item" onClick={addNewChoice}>Add Choice</button>
         </div>
     );
 }

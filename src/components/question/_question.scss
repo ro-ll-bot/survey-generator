@@ -8,15 +8,19 @@
   }
 
   &-content {
+    resize: none;
     width: 70%;
-    height: 3rem;
-    border-radius: 0.5rem;
-    font-family: 'Roboto Mono Regular';
+    height: 6rem;
+    border-style: none none none double;
+    border-width: 0.3rem;
+    padding: 0.5rem;
+    font-family: 'Times New Roman';
+    font-size: x-large;
 
     &:focus{
       outline: none;
       background-origin: padding-box;
-      padding: 0.5rem;
+      padding: 0.6rem;
       border: solid silver 0.1rem;
       box-shadow: 0.5px 0.5px; 
     }
@@ -26,8 +30,5 @@
   &-img {
     margin-bottom: 1rem;
     padding: 0.2rem;
-    &:hover {
-      src: '../../ui/assets/unlock.png';
-    }
   }
 }

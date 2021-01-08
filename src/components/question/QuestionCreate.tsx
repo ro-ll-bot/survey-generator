@@ -16,7 +16,7 @@ export default function QuestionCreate(props: QuestionProps) {
     };
 
     const addQuestion = () => {
-        questions.push({ id: id, question: "", choices: [], type: QuestionType.RATED });
+        questions.push({ id: id, question: "", choices: [], isLock:false, type: QuestionType.RATED });
         setId(id + 1);
         setQuestions(questions);
     }

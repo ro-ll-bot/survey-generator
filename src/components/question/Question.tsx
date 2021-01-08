@@ -7,11 +7,14 @@ import PADLOCK from '../../ui/assets/padlock.png';
 
 function QuestionUI(question: Question, updateQContent: (idx: number, data: string) => void, setQLock: (qIdx: number) => void) {
 
+    const pointerEvents = question.isLock?'none':'auto';
+    const opacity = question.isLock?0.6:1;
+
     return (
-        <div className="question-container">
-            <textarea className="question-content" placeholder="Question content..." onChange={e => updateQContent(question.id, e.target.value)}></textarea>
+        <div className="question-container" style={{opacity: opacity}}>
+            <textarea className="question-content" style={{pointerEvents: pointerEvents}} placeholder="Question content..." onChange={e => updateQContent(question.id, e.target.value)}></textarea>
             <img className="question-img" src={question.isLock?PADLOCK:UNLOCK} onClick={()=> setQLock(question.id)}/>
-            <CreateChoiceGroup type={QuestionType.LINKED} choiceList={question.choices} />
+            <CreateChoiceGroup type={QuestionType.LINKED} editable={!question.isLock} choiceList={question.choices} />
         </div>
     );
 }
@@ -47,7 +50,7 @@ export function QuestionGroup(props: QuestionProps) {
                 console.log('rendered');
                 return QuestionUI(question, questionInputChange, setQLock);
             })}
-            <button onClick={addNewQuestion}>Add Question</button>
+            <button className="add-item" onClick={addNewQuestion}>Add Question</button>
         </div>
     );
 }

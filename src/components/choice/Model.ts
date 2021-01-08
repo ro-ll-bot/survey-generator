@@ -13,6 +13,7 @@ export enum ChoiceResultType {
 export interface ChoiceProps {
   choiceList: Choice[];
   type: QuestionType;
+  editable: boolean;
 }
 
 export interface Choice {

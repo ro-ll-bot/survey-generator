@@ -4,21 +4,26 @@
         width: 100%;
         display: block;
         text-align: center;
+        margin-left: -1rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.3rem;
 
         &-linked {
             width: 8%;
-            margin-left: -2rem;
-            height: 2rem;
+            //margin-left: -2rem;
+            margin: 0;
             background-color: antiquewhite;    
             font-family: 'Roboto Mono Medium';
+            font-size: medium;
             border-radius: 0.5rem;
             border: solid black 1px;
             margin-right: 1rem;
+            padding: 0.5rem;
+            vertical-align: middle;
 
             &:focus{
                 outline: none;
                 background-origin: padding-box;
-                padding: 0.5rem;
                 border: solid silver 0.1rem;
                 box-shadow: 0.5px 0.5px; 
             }
@@ -30,11 +35,13 @@
     }
 
     &-content {
-        height: 2rem;
         width: 60%;
-        font-family: 'Roboto Mono Medium';
+        font-family: 'Times New Roman';
+        font-size: large;
         border-radius: 0.5rem;
-        margin-bottom: -1rem;
+        padding: 0.6rem;
+        height: 3rem;
+        vertical-align: middle;
 
         &:focus{
             outline: none;
