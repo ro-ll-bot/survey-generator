@@ -2,6 +2,11 @@
   border: 1px solid #ffdf99;
   background-color: #ffdf99;
   border-radius: .5rem;
+  height: 3rem;
+  width: 8rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .button:hover {
@@ -14,18 +19,25 @@
 
 .add-item {
   color: white;
-  padding: 1rem 2rem;
-  text-align: center;
-  text-decoration: none;
+  background-color: darkslateblue;
   cursor: pointer;
-  background-color: #4CAF50;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.7s;
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
 }
 
 .add-item:hover {
   -webkit-box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.add-item:focus {
+  outline: none;
+  border: none;
 }
 
 body {
@@ -86,8 +98,10 @@ body {
   background-origin: padding-box;
   padding: 0.6rem;
   border: solid silver 0.1rem;
-  -webkit-box-shadow: 0.5px 0.5px;
-          box-shadow: 0.5px 0.5px;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-box-shadow: 0 0.8rem 1rem 0 rgba(0, 0, 0, 0.24), 0 1rem 3rem 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 0.8rem 1rem 0 rgba(0, 0, 0, 0.24), 0 1rem 3rem 0 rgba(0, 0, 0, 0.19);
 }
 
 .question-img {
@@ -102,6 +116,7 @@ body {
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 10001;
 }
 
 .nav a {
@@ -129,7 +144,7 @@ body {
 }
 
 .choice-ans {
-  width: 100%;
+  width: 80;
   display: block;
   text-align: center;
   margin-left: -1rem;
@@ -139,14 +154,13 @@ body {
 
 .choice-ans-linked {
   width: 8%;
-  margin: 0;
-  background-color: antiquewhite;
+  background-color: whitesmoke;
   font-family: 'Roboto Mono Medium';
-  font-size: medium;
-  border-radius: 0.5rem;
+  font-size: large;
+  padding: 0.3rem;
+  height: 1.5rem;
   border: solid black 1px;
   margin-right: 1rem;
-  padding: 0.5rem;
   vertical-align: middle;
 }
 
@@ -163,10 +177,10 @@ body {
 }
 
 .choice-content {
+  resize: none;
   width: 60%;
   font-family: 'Times New Roman';
   font-size: large;
-  border-radius: 0.5rem;
   padding: 0.6rem;
   height: 3rem;
   vertical-align: middle;
@@ -177,7 +191,9 @@ body {
   background-origin: padding-box;
   padding: 0.5rem;
   border: solid silver 0.1rem;
-  -webkit-box-shadow: 0.5px 0.5px;
-          box-shadow: 0.5px 0.5px;
+  -webkit-box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.24), 0 1rem 2rem 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.24), 0 1rem 2rem 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation: cubic-bezier(0.075, 0.82, 0.165, 1);
+          animation: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 /*# sourceMappingURL=main.css.map */

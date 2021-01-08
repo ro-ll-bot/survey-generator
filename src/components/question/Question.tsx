@@ -12,7 +12,7 @@ function QuestionUI(question: Question, updateQContent: (idx: number, data: stri
 
     return (
         <div className="question-container" style={{opacity: opacity}}>
-            <textarea className="question-content" style={{pointerEvents: pointerEvents}} placeholder="Question content..." onChange={e => updateQContent(question.id, e.target.value)}></textarea>
+            <textarea autoFocus={true} className="question-content" style={{pointerEvents: pointerEvents}} placeholder="Question content..." onChange={e => updateQContent(question.id, e.target.value)}></textarea>
             <img className="question-img" src={question.isLock?PADLOCK:UNLOCK} onClick={()=> setQLock(question.id)}/>
             <CreateChoiceGroup type={QuestionType.LINKED} editable={!question.isLock} choiceList={question.choices} />
         </div>
@@ -46,11 +46,11 @@ export function QuestionGroup(props: QuestionProps) {
 
     return (
         <div>
-            {questions.map(question => {
-                console.log('rendered');
-                return QuestionUI(question, questionInputChange, setQLock);
-            })}
-            <button className="add-item" onClick={addNewQuestion}>Add Question</button>
+            {questions.map(question => QuestionUI(question, questionInputChange, setQLock))}
+            <div className="question-container" onClick={addNewQuestion}>
+                <textarea style={{pointerEvents:'none'}} className="question-content" placeholder="Question content..." ></textarea>
+                <img className="question-img" src={UNLOCK} />
+            </div>
         </div>
     );
 }

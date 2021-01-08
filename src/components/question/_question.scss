@@ -22,7 +22,8 @@
       background-origin: padding-box;
       padding: 0.6rem;
       border: solid silver 0.1rem;
-      box-shadow: 0.5px 0.5px; 
+      transition-duration: 0.3s;
+      box-shadow: 0 0.8rem 1rem 0 rgba(0,0,0,0.24),0 1rem 3rem 0 rgba(0,0,0,0.19);
     }
 
   }

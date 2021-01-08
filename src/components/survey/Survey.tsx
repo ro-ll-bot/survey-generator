@@ -35,7 +35,9 @@ export function SurveyGenerator() {
 
   return (<div>
     <QuestionGroup questionList={questions}></QuestionGroup>
-    <button onClick={finishSurvey}>Finish Survey</button>
+    <div className="question-container">
+      <button className="button" onClick={finishSurvey}>Generate Survey</button>
+    </div>
   </div>
   );
 }

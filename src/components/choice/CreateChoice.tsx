@@ -13,7 +13,7 @@ function ChoiceLinkedUi(choice: Choice,
 
     return (
         <div className="choice-ans">
-            <input className="choice-ans-linked" type="text" onChange={e => updateLinkedContent(e.target.value)} />
+            <input className="choice-ans-linked" placeholder="1,2..." type="text" onChange={e => updateLinkedContent(e.target.value)} />
             <textarea className="choice-content" placeholder="Choice content..." onChange={e => updateContent(choice.id, e.target.value)} ></textarea>
         </div>
     );
@@ -65,6 +65,14 @@ export default function CreateChoiceGroup(props: ChoiceProps) {
         <div style={{pointerEvents: pointerEvents}}>
             {choices.map(choice => dynamicChoiceUi(choice))}
             <button className="add-item" onClick={addNewChoice}>Add Choice</button>
+            {/* <div className="choice-ans">
+                <button className="add-item" onClick={addNewChoice}>Add Choice</button>
+                <textarea style={{ opacity: 0.5}} className="choice-content" placeholder="Choice content..."></textarea>
+            </div> */}
+            {/* <div style={{boxSizing:'content-box', display: 'inline-flex', opacity: 0.3}}>
+                <button className="add-item" onClick={addNewChoice}>Add Choice</button>
+                {ChoiceLinkedUi(choices[0], updateAnswer, updateContent)}
+            </div> */}
         </div>
     );
 }
