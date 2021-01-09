@@ -1,4 +1,4 @@
-import { Choice } from '../choice/Model';
+import { Choice } from '../choice/Choice';
 
 export enum QuestionType {
   RATED,
@@ -11,6 +11,7 @@ export interface Question {
   choices: Choice[];
   question: string;
   isLock?: boolean;
+  isCollapsed?: boolean;
   type: QuestionType;
 }
 

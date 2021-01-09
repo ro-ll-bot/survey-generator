@@ -26,8 +26,8 @@
   margin-top: 0.5rem;
   margin-right: 2rem;
   border-radius: 50%;
-  width: 4rem;
-  height: 4rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .add-item:hover {
@@ -82,12 +82,38 @@ body {
   padding: 1rem;
 }
 
+.question-create-container {
+  width: 100%;
+  margin-right: 15%;
+  margin-left: 15%;
+  display: flexbox;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.question-create-collapse-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: bottom;
+}
+
+.question-create-collapse-header {
+  margin: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0;
+}
+
 .question-content {
   resize: none;
-  width: 70%;
+  width: 100%;
   height: 6rem;
-  border-style: none none none double;
-  border-width: 0.3rem;
+  border-style: solid;
   padding: 0.5rem;
   font-family: 'Times New Roman';
   font-size: x-large;
@@ -144,24 +170,22 @@ body {
 }
 
 .choice-ans {
-  width: 80;
-  display: block;
-  text-align: center;
-  margin-left: -1rem;
+  width: 100%;
+  margin-left: 15%;
+  margin-right: 15%;
   margin-top: 0.2rem;
   margin-bottom: 0.3rem;
 }
 
 .choice-ans-linked {
-  width: 8%;
+  width: 7%;
   background-color: whitesmoke;
   font-family: 'Roboto Mono Medium';
   font-size: large;
-  padding: 0.3rem;
   height: 1.5rem;
-  border: solid black 1px;
-  margin-right: 1rem;
-  vertical-align: middle;
+  border: solid gray 1px;
+  margin-right: 1%;
+  vertical-align: top;
 }
 
 .choice-ans-linked:focus {
@@ -177,12 +201,11 @@ body {
 }
 
 .choice-content {
-  resize: none;
-  width: 60%;
+  width: 62%;
   font-family: 'Times New Roman';
   font-size: large;
-  padding: 0.6rem;
-  height: 3rem;
+  padding: 0.3rem;
+  height: 1,5rem;
   vertical-align: middle;
 }
 
@@ -193,7 +216,7 @@ body {
   border: solid silver 0.1rem;
   -webkit-box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.24), 0 1rem 2rem 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.24), 0 1rem 2rem 0 rgba(0, 0, 0, 0.19);
-  -webkit-animation: cubic-bezier(0.075, 0.82, 0.165, 1);
-          animation: cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 /*# sourceMappingURL=main.css.map */

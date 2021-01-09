@@ -1,4 +1,4 @@
-import { QuestionType } from '../question/Model';
+import { QuestionType } from '../question/Question';
 
 export enum ChoiceType {
   CHOICE_SINGLE = "radio",

@@ -1,26 +1,24 @@
 .choice {
 
     &-ans {
-        width: 80;
-        display: block;
-        text-align: center;
-        margin-left: -1rem;
+        width: 100%;
+        margin-left: 15%;
+        margin-right: 15%;
         margin-top: 0.2rem;
         margin-bottom: 0.3rem;
 
         &-linked {
-            width: 8%;
+            width: 7%;
             //margin-left: -2rem;
             background-color: whitesmoke;    
             font-family: 'Roboto Mono Medium';
             font-size: large;
-            padding: 0.3rem;
             height: 1.5rem;
             //border-radius: 0.5rem;
-            border: solid black 1px;
-            margin-right: 1rem;
+            border: solid gray 1px;
+            margin-right: 1%;
             //padding: 0.5rem;
-            vertical-align: middle;
+            vertical-align: top;
 
             &:focus{
                 outline: none;
@@ -36,8 +34,8 @@
     }
 
     &-content {
-        resize: none;
-        width: 60%;
+        //resize: none;
+        width: 62%;
         font-family: 'Times New Roman';
         font-size: large;
         //border-top-style: none;
@@ -46,8 +44,8 @@
         //border-left-style: double;
         //border-width: 0.3rem;
         //border-radius: 0.5rem;
-        padding: 0.6rem;
-        height: 3rem;
+        padding: 0.3rem;
+        height: 1,5rem;
         vertical-align: middle;
 
         &:focus{
@@ -56,8 +54,8 @@
             padding: 0.5rem;
             border: solid silver 0.1rem;
             box-shadow: 0 0.2rem 0.2rem 0 rgba(0,0,0,0.24),0 1rem 2rem 0 rgba(0,0,0,0.19);
+            transition-duration: 0.3s;
             //box-shadow: 0.5px 0.5px; 
-            animation: cubic-bezier(0.075, 0.82, 0.165, 1);
         }
     }
 }
