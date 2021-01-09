@@ -15,7 +15,6 @@
 body {
   display: -ms-grid;
   display: grid;
-  background-color: azure;
 }
 
 .question-container {
@@ -48,7 +47,7 @@ body {
 .question-container {
   margin: auto;
   margin-bottom: 1rem;
-  width: 50%;
+  width: 80%;
 }
 
 .nav {
