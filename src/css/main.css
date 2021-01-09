@@ -15,14 +15,12 @@
 body {
   display: -ms-grid;
   display: grid;
+  background-color: azure;
 }
 
 .question-container {
   display: -ms-grid;
   display: grid;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -48,8 +46,9 @@ body {
 }
 
 .question-container {
-  border: 1px solid #ffae00;
-  border-radius: .5rem;
+  margin: auto;
+  margin-bottom: 1rem;
+  width: 50%;
 }
 
 .nav {

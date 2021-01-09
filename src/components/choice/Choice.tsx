@@ -14,7 +14,7 @@ export interface Choice {
   id: number;
   groupId: string,
   rate: number;
-  content: string | ImageBitmap;
+  content: string;
   type?: ChoiceType,
 }
 
@@ -38,8 +38,7 @@ export function ChoiceGroupList(props: ChoiceProps) {
   const choiceUI = (choice: Choice) => {
     return (
       <div className="choice">
-        <input type={choice.type} name={choice.groupId}/>
-        <p>{choice.content}</p>
+        <span><input type={choice.type} name={choice.groupId} value={choice.content} /> {choice.content}</span>
       </div>
     )
   };
