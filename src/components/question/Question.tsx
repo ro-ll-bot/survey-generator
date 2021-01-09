@@ -58,7 +58,7 @@ export function QuestionGroupList(props: QuestionProps) {
   const QuestionListUI = (question: Question) => {
     return (
       <div className="question-container">
-        <p>{question.question}</p>
+        <p><b>{question.id}.) {question.question} </b></p>
         <ChoiceGroupList choiceList={question.choices} />
       </div>
     );

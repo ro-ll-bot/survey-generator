@@ -37,8 +37,8 @@ export function ChoiceGroupList(props: ChoiceProps) {
 
   const choiceUI = (choice: Choice) => {
     return (
-      <div className="choice">
-        <span><input type={choice.type} name={choice.groupId} value={choice.content} /> {choice.content}</span>
+      <div>
+        <div className="choice"><span><input type={choice.type} name={choice.groupId} value={choice.content} /> {choice.content}</span></div>
       </div>
     )
   };
@@ -46,6 +46,7 @@ export function ChoiceGroupList(props: ChoiceProps) {
   return (
     <div >
       {props.choiceList.map(choice => choiceUI(choice))}
+      <hr/>
     </div>);
 }
 
