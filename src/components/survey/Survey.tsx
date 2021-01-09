@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { QuestionGroup, Question, QuestionGroupList } from '../question/Question';
+import { Question } from '../question/Question';
 import { SURVEY_BASE_URL } from './utils/SurveyConstants';
+
+import CreateQuestionGroup from '../question/CreateQuestion';
 
 
 export enum SurveyStatus {
@@ -33,8 +35,10 @@ export function SurveyGenerator() {
   };
 
   return (<div>
-    <QuestionGroup questionList={questions}></QuestionGroup>
-    <button onClick={finishSurvey}>Finish Survey</button>
+    <CreateQuestionGroup questionList={questions}></CreateQuestionGroup>
+    <div className="question-container">
+      <button className="button" onClick={finishSurvey}>Generate Survey</button>
+    </div>
   </div>
   );
 }
@@ -47,7 +51,7 @@ export function SurveyList() {
 
   return (
     <div>
-      <QuestionGroupList questionList={questions} />
+      {/* <QuestionGroupList questionList={questions} /> */}
     </div>
   )
 }

@@ -8,6 +8,9 @@ $main-color-light: lighten($main-color, 30);
   border: 1px solid $main-color-light;
   background-color: $main-color-light;
   border-radius: .5rem;
+  height: 3rem;
+  width: 8rem;
+  justify-content: center;
 
   &:hover {
     background-color: $main-color;
@@ -15,5 +18,27 @@ $main-color-light: lighten($main-color, 30);
 
   &:active {
     background-color: $main-color;
+  }
+}
+
+.add-item {
+  color: white;
+  background-color: darkslateblue;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; // safari
+  transition-duration: 0.7s;
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+
+  &:hover {
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  &:focus {
+    outline: none;
+    border: none;
   }
 }
