@@ -10,21 +10,6 @@ import { Timeline } from '../Timeline';
 import { SURVEY_BASE_URL } from '../../components/survey/utils/SurveyConstants';
 
 export function Home() {
-
-  const [width, setWidth] = React.useState(window.innerWidth);
-  const [height, setHeight] = React.useState(window.innerHeight);
-
-  const updateWidthAndHeight = () => {
-    console.log("ksdfkdfh");
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-  };
-
-  React.useEffect(() => {
-    window.addEventListener("resize", updateWidthAndHeight);
-    window.removeEventListener("resize", updateWidthAndHeight);
-});
-
   return (
     <BrowserRouter>
       <Navbar />
