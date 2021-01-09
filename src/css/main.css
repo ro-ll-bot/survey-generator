@@ -219,4 +219,31 @@ body {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
 }
+
+.result-container {
+  width: 200px;
+  height: 300px;
+  border: 1px solid orange;
+  margin: 20px 40px;
+  text-align: center;
+  opacity: 0.4;
+}
+
+.result-container img {
+  max-width: 150px;
+  max-height: 300px;
+}
+
+.result-container:hover {
+  opacity: 1;
+}
+
+.add-result-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-top: 50%;
+  font-size: 2rem;
+  color: white;
+}
 /*# sourceMappingURL=main.css.map */

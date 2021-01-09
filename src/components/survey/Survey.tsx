@@ -4,6 +4,7 @@ import { Question } from '../question/Question';
 import { SURVEY_BASE_URL } from './utils/SurveyConstants';
 
 import CreateQuestionGroup from '../question/CreateQuestion';
+import CreateResult, { ResultUI } from '../result/CreateResult';
 
 
 export enum SurveyStatus {
@@ -34,12 +35,14 @@ export function SurveyGenerator() {
     console.log(JSON.stringify(questions));
   };
 
-  return (<div>
-    <CreateQuestionGroup questionList={questions}></CreateQuestionGroup>
-    <div className="question-container">
-      <button className="button" onClick={finishSurvey}>Generate Survey</button>
+  return (
+    <div>
+      <CreateResult />
+      <CreateQuestionGroup questionList={questions}></CreateQuestionGroup>
+      <div className="question-container">
+        <button className="button" onClick={finishSurvey}>Generate Survey</button>
+      </div>
     </div>
-  </div>
   );
 }
 
