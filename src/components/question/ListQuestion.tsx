@@ -9,7 +9,7 @@ export function QuestionGroupList(props: QuestionProps) {
     return (
       <div className="question-container">
         <p><b>{question.id}.) {question.question} </b></p>
-        <ChoiceGroupList choiceList={question.choices} />
+        <ChoiceGroupList choiceList={question.choices} type={question.type} editable={false}/>
       </div>
     );
   };
