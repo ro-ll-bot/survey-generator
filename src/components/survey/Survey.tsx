@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Question } from '../question/Question';
 import { SURVEY_BASE_URL } from './utils/SurveyConstants';
 import CreateQuestionGroup from '../question/CreateQuestion';
-import  { ResultGroup } from '../result/CreateResult';
-import {QuestionGroupList} from '../question/ListQuestion';
+import { ResultGroup } from '../result/CreateResult';
+import { QuestionGroupList } from '../question/ListQuestion';
 
 export enum SurveyStatus {
   NEW = "New",
@@ -19,7 +19,7 @@ export interface SurveyTimelineCardData {
   description: string;
   questionCount: number;
   image?: string;
-  status?: SurveyStatus;
+  status: SurveyStatus;
 }
 
 export interface SurveyProps {
@@ -70,19 +70,30 @@ export function SurveyTimeline(props: SurveyProps) {
 
 function SurveyTimelineCard(survey: SurveyTimelineCardData) {
 
+  const testUrl = "https://images.unsplash.com/photo-1580251645806-239f4df8ce13?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80"
+
+  function SurveyStatusCheck(status: SurveyStatus) {
+    if (status === SurveyStatus.NEW)
+      return <hr color="green" />
+    else if (status === SurveyStatus.VIEWED)
+      return <hr color="orange" />
+    else if (status === SurveyStatus.SOLVED)
+      return <hr color="red" />
+  }
+
+
   return (
     <div className="survey-timeline-card">
-      <img src={survey.image} alt={survey.title} />
-      <hr />
-      <h3><Link to={`${SURVEY_BASE_URL}/${survey.id}`}>{survey.title}</Link></h3>
-      <p>{survey.description}</p>
+
+      <b style={{ float: 'right' }}>{survey.status}</b>
+      {SurveyStatusCheck(survey.status)}
+      {survey.image !== undefined ?
+        <img src={survey.image} alt={survey.title} width="250" height="150" /> : <img src={testUrl} alt={survey.title} width="250" height="150" />
+      }
+      <h3><Link to={`${SURVEY_BASE_URL}/${survey.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>{survey.title}</Link></h3>
+      <p>{survey.description.substring(0, 205)}...</p>
       <div>
-        <span>{`Author ${survey.owner}`}</span>
-        <br />
-        <span>{`The ${survey.title} has ${survey.questionCount} questions.`}</span>
-        <br />
-        <span>{survey.status}</span>
-        <br />
+        <b><span style={{ float: 'right' }}>1/10/2021 - {survey.owner}</span></b>
       </div>
     </div>
   )

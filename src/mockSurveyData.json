@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "owner": "Yasko",
-    "title": "First Survey",
-    "description": "Lorem Ipsulum orem bla bla",
+    "owner": "Hasancan Kazan",
+    "title": "Hangi Süper Kahramansın ?",
+    "description": "Kendi dünyanızdaki süper kahramanınızı bulabileceğiniz efsane anket uygulaması survey generator ile tek yapmanız gereken anket içeriğine ulaşmak ve birbirinden eğlenceli soruları eksiksiz bir şekilde çözmek. Ardından hangi kahraman olduğunuzu çözecek ve bu sayede aylık ödülün sahibi olma hakkını kazanabileceksiniz.",
     "questionCount": 10,
     "status": "New"
   },
