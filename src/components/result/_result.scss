@@ -1,33 +1,63 @@
-.result-container {
-  width: 200px;
-  height: 300px;
-
-  border: 1px solid orange;
-
-  margin: 20px 40px;
-
-  text-align: center;
-
-  opacity: 0.4;
-
-  img {
-  max-width: 150px;
-  max-height: 300px;
+.result {
+  &-group {
+    display: flex;
+    margin: 20px 30px 30px 20px;
   }
 
-  &:hover {
-    opacity: 1;
+  &-container {
+    width: 200px;
+    height: 300px;
+
+    border: 1px solid orange;
+
+    background-color: $main-color-light;
+
+    margin: 0 10px;
+
+    text-align: center;
+
+    opacity: 0.4;
+
+    img {
+      max-width: 150px;
+      max-height: 300px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &-input-group {
+
+    input {
+      min-height: 25px;
+      margin: 5px 0;
+
+      border: none;
+    }
   }
 }
-
 .add-result-button {
   width: 60px;
   height: 60px;
 
+  border: 1px solid orange;
   border-radius: 50%;
 
-  margin-top: 50%;
+  color: orange;
+  background-color: white;
+
+  margin-top: 20%;
 
   font-size: 2rem;
-  color: white;
+
+  &:hover {
+    color: white;
+    background-color: orange;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
