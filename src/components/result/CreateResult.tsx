@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Result } from './Result'
+import { SurveyResult } from './Result'
 
 const mockResult = [{
   id: 1,
@@ -16,7 +16,7 @@ const mockResult = [{
 
 export function ResultGroup() {
   const [id, setId] = useState(3);
-  const [results, setResults] = useState<Result[]>(mockResult);
+  const [results, setResults] = useState<SurveyResult[]>(mockResult);
 
   const ResultUI = () => {
     return (
