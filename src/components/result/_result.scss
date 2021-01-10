@@ -1,7 +1,11 @@
 .result {
   &-group {
     display: flex;
-    margin: 20px 30px 30px 20px;
+    margin: 20px 5%;
+
+    &-container {
+      margin: 0 10%;
+    }
   }
 
   &-container {

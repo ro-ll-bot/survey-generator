@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Question } from '../question/Question';
 import { SURVEY_BASE_URL } from './utils/SurveyConstants';
 import CreateQuestionGroup from '../question/CreateQuestion';
-import  { ResultGroup } from '../result/CreateResult';
-import {QuestionGroupList} from '../question/ListQuestion';
+import { ResultGroup } from '../result/CreateResult';
+import { QuestionGroupList } from '../question/ListQuestion';
 
 export enum SurveyStatus {
   NEW = "New",
@@ -53,7 +53,7 @@ export function SurveyList() {
 
   return (
     <div>
-      { <QuestionGroupList questionList={questions} />}
+      <QuestionGroupList questionList={questions} />
     </div>
   )
 }
