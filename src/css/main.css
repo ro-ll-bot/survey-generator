@@ -219,4 +219,56 @@ body {
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
 }
+
+.result-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px 30px 30px 20px;
+}
+
+.result-container {
+  width: 200px;
+  height: 300px;
+  border: 1px solid orange;
+  background-color: #ffdf99;
+  margin: 0 10px;
+  text-align: center;
+  opacity: 0.4;
+}
+
+.result-container img {
+  max-width: 150px;
+  max-height: 300px;
+}
+
+.result-container:hover {
+  opacity: 1;
+}
+
+.result-input-group input {
+  min-height: 25px;
+  margin: 5px 0;
+  border: none;
+}
+
+.add-result-button {
+  width: 60px;
+  height: 60px;
+  border: 1px solid orange;
+  border-radius: 50%;
+  color: orange;
+  background-color: white;
+  margin-top: 20%;
+  font-size: 2rem;
+}
+
+.add-result-button:hover {
+  color: white;
+  background-color: orange;
+}
+
+.add-result-button:focus {
+  outline: none;
+}
 /*# sourceMappingURL=main.css.map */

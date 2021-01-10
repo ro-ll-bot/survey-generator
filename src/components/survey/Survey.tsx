@@ -4,6 +4,7 @@ import { Question } from '../question/Question';
 import { SURVEY_BASE_URL } from './utils/SurveyConstants';
 
 import CreateQuestionGroup from '../question/CreateQuestion';
+import  { ResultGroup } from '../result/CreateResult';
 
 
 export enum SurveyStatus {
@@ -34,20 +35,22 @@ export function SurveyGenerator() {
     console.log(JSON.stringify(questions));
   };
 
-  return (<div>
-    <CreateQuestionGroup questionList={questions}></CreateQuestionGroup>
-    <div className="question-container">
-      <button className="button" onClick={finishSurvey}>Generate Survey</button>
+  return (
+    <div>
+      <ResultGroup />
+      <CreateQuestionGroup questionList={questions}></CreateQuestionGroup>
+      <div className="question-container">
+        <button className="button" onClick={finishSurvey}>Generate Survey</button>
+      </div>
     </div>
-  </div>
   );
 }
 
 // If need to read this data dynamically use fs library instead of require.
-const mockQuestions = require("../../mockQuestionData.json");
+//const mockQuestions = require("../../mockQuestionData.json");
 
 export function SurveyList() {
-  const questions: Question[] = mockQuestions;
+  //const questions: Question[] = mockQuestions;
 
   return (
     <div>
