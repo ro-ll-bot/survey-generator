@@ -8,7 +8,7 @@ export function ChoiceGroupList(props: ChoiceProps) {
   const choiceUI = (choice: Choice) => {
     return (
       <div>
-        <div className="choice"><span><input type={choice.type} name={choice.groupId} value={choice.content.toString()} /> {choice.content}</span></div>
+        <div className="choice-list"><span><input type={choice.type} name={choice.groupId} value={choice.content.toString()} /> {choice.content}</span></div>
       </div>
     )
   };
