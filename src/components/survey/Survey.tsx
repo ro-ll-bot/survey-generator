@@ -46,10 +46,10 @@ export function SurveyGenerator() {
 }
 
 // If need to read this data dynamically use fs library instead of require.
-//const mockQuestions = require("../../mockQuestionData.json");
+const mockQuestions = require("../../mockQuestionData.json");
 
 export function SurveyList() {
-  //const questions: Question[] = mockQuestions;
+  const questions: Question[] = mockQuestions;
 
   return (
     <div>
