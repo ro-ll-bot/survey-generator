@@ -1,7 +1,7 @@
+import "react-multi-carousel/lib/styles.css";
+import Carousel from "react-multi-carousel";
 import React, { useState } from 'react';
-import { SurveyResult, SurveyResultProps } from './Result';
-import ResultCarousel from './ResultCarousel';
-
+import { SurveyResult } from './Result';
 
 const mockResult = [{
   id: 1,
@@ -13,12 +13,88 @@ const mockResult = [{
   title: "Second Result",
   description: "lorem ipsum lorem ipsum lorem ipsum lorem lorem lorem",
   image: "https://images.unsplash.com/photo-1580251645806-239f4df8ce13?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80"
+},
+{
+  id: 3,
+  title: "Second Result",
+  description: "lorem ipsum lorem ipsum lorem ipsum lorem lorem lorem",
+  image: "https://images.unsplash.com/photo-1580251645806-239f4df8ce13?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80"
+},
+{
+  id: 4,
+  title: "Second Result",
+  description: "lorem ipsum lorem ipsum lorem ipsum lorem lorem lorem",
+  image: "https://images.unsplash.com/photo-1580251645806-239f4df8ce13?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80"
 }]
 
 export function ResultGroup() {
   const [id, setId] = useState(3);
   const [results, setResults] = useState<SurveyResult[]>(mockResult);
-  const reversedResults: SurveyResult[] = [...results].reverse();
+  const reversedResults = [...results].reverse();
+
+  const ResultCarousel = () => {
+    return (
+      <div>
+        <Carousel
+          additionalTransfrom={0}
+          arrows
+          autoPlaySpeed={10000}
+          centerMode={true}
+          className=""
+          containerClass="container"
+          dotListClass=""
+          draggable={true}
+          focusOnSelect={false}
+          infinite={false}
+          itemClass=""
+          keyBoardControl
+          minimumTouchDrag={10}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024
+              },
+              items: 4,
+              partialVisibilityGutter: 10
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0
+              },
+              items: 1,
+              partialVisibilityGutter: 10
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464
+              },
+              items: 2,
+              partialVisibilityGutter: 10
+            }
+          }}
+          showDots={false}
+          sliderClass=""
+          slidesToSlide={1}
+          swipeable>
+            <CreateResult />
+          {reversedResults.reverse().map((result) => (
+            <div key={result.id} className="result-container">
+              <h5>{result.title}</h5>
+              {result.image &&
+                <img src={result.image} alt={result.title} />
+              }
+              <p>{result.description}</p>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+    )
+  }
 
   const CreateResult = () => {
     return (
@@ -44,9 +120,7 @@ export function ResultGroup() {
   };
 
   const titleInputChange = (data: string) => newResult.title = data;
-
   const descriptionInputChange = (data: string) => newResult.description = data;
-
   const imageInputChange = (data: string) => newResult.image = data;
 
   const addNewResult = () => {
@@ -61,8 +135,7 @@ export function ResultGroup() {
 
   return (
     <div className="result-group-container">
-      <CreateResult />
-      <ResultCarousel results={reversedResults} />
+      <ResultCarousel />
     </div>
   )
 }

@@ -4,7 +4,3 @@ export interface SurveyResult {
   description?: string;
   image?: string;
 }
-
-export interface SurveyResultProps {
-  resultList: SurveyResult[];
-}
