@@ -23,15 +23,21 @@
     // border: 3px solid rgb(182, 77, 77);
     padding: 1rem;
     margin-top: 1rem;
-    width: 60%;
+    width: 55%;
+    font-family: "Garamond";
 
     box-shadow: 1px 2px 4px #525252;
     border-radius: 0.2rem;
+  }
+
+  &-owner {
+    font-family: "Brush Script MT";
   }
 
   &-card > img {
     float: left;
     margin-right: 1rem;
     margin: 0.75rem;
+    box-shadow: 3px 6px 6px #525252;
   }
 }
