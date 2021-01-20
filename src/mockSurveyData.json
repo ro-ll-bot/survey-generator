@@ -5,7 +5,8 @@
     "title": "Hangi Süper Kahramansın ?",
     "description": "Kendi dünyanızdaki süper kahramanınızı bulabileceğiniz efsane anket uygulaması survey generator ile tek yapmanız gereken anket içeriğine ulaşmak ve birbirinden eğlenceli soruları eksiksiz bir şekilde çözmek. Ardından hangi kahraman olduğunuzu çözecek ve bu sayede aylık ödülün sahibi olma hakkını kazanabileceksiniz.",
     "questionCount": 10,
-    "status": "New"
+    "statusId": 0,
+    "statusDesc": "New"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "title": "Second Survey",
     "description": "Lorem Ipsulum orem bla bla",
     "questionCount": 5,
-    "status": "Viewed"
+    "statusId": 1,
+    "statusDesc": "Viewed"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "title": "Third Survey",
     "description": "Lorem Ipsulum orem bla bla",
     "questionCount": 7,
-    "status": "Solved"
+    "statusId": 2,
+    "statusDesc": "Solved"
   },
   {
     "id": 4,
@@ -29,6 +32,7 @@
     "title": "XMAS Survey",
     "description": "Lorem Ipsulum orem bla bla",
     "questionCount": 12,
-    "status": "New"
+    "statusId": 0,
+    "statusDesc": "New"
   }
 ]
