@@ -7,9 +7,9 @@ import { ResultGroup } from '../result/CreateResult';
 import { QuestionGroupList } from '../question/ListQuestion';
 
 export enum SurveyStatus {
-  NEW = "New",
-  VIEWED = "Viewed",
-  SOLVED = "Solved"
+  NEW = 0,
+  VIEWED = 1,
+  SOLVED = 2
 }
 
 export interface SurveyTimelineCardData {
@@ -19,7 +19,8 @@ export interface SurveyTimelineCardData {
   description: string;
   questionCount: number;
   image?: string;
-  status?: SurveyStatus;
+  statusId: SurveyStatus;
+  statusDesc: SurveyStatus;
 }
 
 export interface SurveyProps {
@@ -70,20 +71,29 @@ export function SurveyTimeline(props: SurveyProps) {
 
 function SurveyTimelineCard(survey: SurveyTimelineCardData) {
 
+  // then create a const array to declare that kind of things
+  // because it can grow in the future.
+  const hrColorStatuses = ["green", "orange", "red"];
+  
+  let getToday = new Date().toDateString();
+  const testUrl = "https://images.unsplash.com/photo-1580251645806-239f4df8ce13?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80"
+
+  function SurveyStatusCheck(status: SurveyStatus) {
+    return <hr color={hrColorStatuses[status]} />
+  }
+
   return (
     <div className="survey-timeline-card">
-      <img src={survey.image} alt={survey.title} />
-      <hr />
-      <h3><Link to={`${SURVEY_BASE_URL}/${survey.id}`}>{survey.title}</Link></h3>
-      <p>{survey.description}</p>
       <div>
-        <span>{`Author ${survey.owner}`}</span>
-        <br />
-        <span>{`The ${survey.title} has ${survey.questionCount} questions.`}</span>
-        <br />
-        <span>{survey.status}</span>
-        <br />
+        <b> {getToday} <span className="survey-timeline-owner"> - {survey.owner}</span></b>
       </div>
+      <b style={{ float: 'right' }}>&nbsp;&nbsp; {survey.statusDesc}</b>
+      {SurveyStatusCheck(survey.statusId)}
+      {survey.image !== undefined ?
+        <img src={survey.image} alt={survey.title} width="250" height="150" /> : <img src={testUrl} alt={survey.title} width="250" height="150" />
+      }
+      <h3><Link to={`${SURVEY_BASE_URL}/${survey.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>{survey.title}</Link></h3>
+      <p>{survey.description.substring(0, 250)}...</p>
     </div>
   )
 }
