@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { QuestionType } from '../question/Question';
+import { surveyState } from '../survey/Survey';
 import { Choice, ChoiceProps } from './Choice';
 
 const CHOICE_HINT: string = 'Write a choice...';
@@ -11,6 +12,10 @@ function ChoiceLinkedUi(choice: Choice, editable: boolean,
     const updateLinkedContent = (data: string) => {
         const splitted: number[] = data.split(',').map(d => parseInt(d));
         updateAns(choice.id, splitted);
+        splitted.forEach(idx => {
+            console.log(`chosen ${idx}`);
+            console.log(JSON.stringify(surveyState.results[idx]));
+        });
     };
 
     return (

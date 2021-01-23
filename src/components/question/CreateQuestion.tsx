@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Question, QuestionType, QuestionProps } from './Question';
-import { FaLock, FaUnlock, FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import { Question, QuestionType } from './Question';
+import { FaLock, FaUnlock, FaChevronDown, FaChevronRight, FaTrash } from 'react-icons/fa';
 
 import CreateChoiceGroup from '../choice/CreateChoice';
+import {surveyState} from '../survey/Survey';
 
 const QUESTION_HINT: string = 'Write a question...';
 
@@ -10,7 +11,8 @@ const QUESTION_HINT: string = 'Write a question...';
 function QuestionUI(question: Question,
     updateQContent: (idx: number, data: string) => void,
     setQLock: (qIdx: number) => void,
-    setQCollapse: (qIdx: number) => void) {
+    setQCollapse: (qIdx: number) => void,
+    deleteQuestion: (qIdx: number) => void) {
 
     const pointerEvents = question.isLock ? 'none' : 'auto';
     const opacity = question.isLock ? 0.6 : 1;
@@ -49,6 +51,7 @@ function QuestionUI(question: Question,
                 <FaChevronRight className="question-create-collapse-icon" onClick={() => setQCollapse(question.id)}>
                 </FaChevronRight>
                 {getLockIcon()}
+                <FaTrash className="question-create-collapse-icon-delete" onClick={() => deleteQuestion(question.id)}></FaTrash>
                 <hr></hr>
                 <textarea
                     autoFocus={!question.isLock}
@@ -71,10 +74,10 @@ function QuestionUI(question: Question,
     );
 }
 
-export default function CreateQuestionGroup(props: QuestionProps) {
+export default function CreateQuestionGroup() {
 
     const [id, setId] = useState(0);
-    const [questions, setQuestions] = useState<Question[]>(props.questionList);
+    const [questions, setQuestions] = useState<Map<number, Question>>(surveyState.questions);
     const [lock, setLock] = useState(false);
     const [collapse, setCollapse] = useState(false);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -92,35 +95,62 @@ export default function CreateQuestionGroup(props: QuestionProps) {
     }, [screenWidth]);
 
     const questionInputChange = (idx: number, data: string) => {
-        questions[idx].question = data;
+        let currentQuestion = questions.get(idx);
+        if(currentQuestion) {
+            currentQuestion.question = data;
+            questions.set(idx, currentQuestion);
+        }
     };
 
     const setQLock = (qIdx: number) => {
-        questions[qIdx].isLock = !questions[qIdx].isLock;
-        setLock(!lock);
+        let currentQuestion = questions.get(qIdx);
+        if(currentQuestion) {
+            currentQuestion.isLock = !currentQuestion.isLock;
+            questions.set(qIdx, currentQuestion);
+            setLock(!lock);
+        }
     };
 
     const setQCollapse = (qIdx: number) => {
-        questions[qIdx].isCollapsed = !questions[qIdx].isCollapsed;
-        setCollapse(!collapse);
+        let currentQuestion = questions.get(qIdx);
+        if(currentQuestion) {
+            currentQuestion.isCollapsed = !currentQuestion.isCollapsed;
+            questions.set(qIdx, currentQuestion);
+            setCollapse(!collapse);
+        }
+    };
+
+    const deleteQuestion = (qIdx: number) => {
+        questions.delete(qIdx);
+        setQuestions(questions);
     };
 
     const addNewQuestion = () => {
         // don't create questions if empty content exist inside any questions
-        const isEmptyContentExists = questions.some(question => question.question.trim().length === 0);
+        // const isEmptyContentExists = questions.some((key, question)=> question.question.trim().length === 0);
+        const isEmptyContentExists = false;
         if (isEmptyContentExists) {
             alert('Fill empty questions');
             return;
         }
 
-        questions.push({ id: id, question: "", choices: [], isLock: false, isCollapsed: false, type: QuestionType.RATED });
+        questions.set(id, { id: id, question: "", choices: [], isLock: false, isCollapsed: false, type: QuestionType.RATED });
         setId(id + 1);
         setQuestions(questions);
+        console.log(questions);
     }
+
+    const mapPrettyPrint = (): JSX.Element[] =>  {
+        const elements: JSX.Element[] = [];
+        questions.forEach(question => {
+            elements.push(QuestionUI(question, questionInputChange, setQLock, setQCollapse, deleteQuestion));
+        })
+        return elements;
+    };
 
     return (
         <div>
-            {questions.map(question => QuestionUI(question, questionInputChange, setQLock, setQCollapse))}
+            {mapPrettyPrint()}
             <div style={{ opacity: 0.3, marginLeft: '15%', marginRight: '15%', marginTop: '1rem' }} onClick={addNewQuestion}>
                 <textarea style={{ pointerEvents: 'none' }} contentEditable={false} value={""} tabIndex={-1} className="question-content" placeholder={QUESTION_HINT} ></textarea>
             </div>
