@@ -1,8 +1,8 @@
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SurveyResult } from './Result';
-import {surveyState} from '../survey/Survey';
+import SurveyContext from "../survey/SurveyContext";
 
 const mockResult = [{
   id: 1,
@@ -29,8 +29,10 @@ const mockResult = [{
 }]
 
 export function ResultGroup() {
+  const survey = useContext(SurveyContext);
+
   const [id, setId] = useState(3);
-  const [results, setResults] = useState<SurveyResult[]>(surveyState.results);
+  const [results, setResults] = useState<SurveyResult[]>(survey.results);
   const reversedResults = [...results].reverse();
 
   results.push(...mockResult);

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Question, QuestionType } from './Question';
 import { FaLock, FaUnlock, FaChevronDown, FaChevronRight, FaTrash } from 'react-icons/fa';
 
 import CreateChoiceGroup from '../choice/CreateChoice';
-import {surveyState} from '../survey/Survey';
+import SurveyContext from '../survey/SurveyContext';
 
 const QUESTION_HINT: string = 'Write a question...';
 
@@ -76,8 +76,10 @@ function QuestionUI(question: Question,
 
 export default function CreateQuestionGroup() {
 
+    const survey = useContext(SurveyContext);
+
     const [id, setId] = useState(0);
-    const [questions, setQuestions] = useState<Map<number, Question>>(surveyState.questions);
+    const [questions, setQuestions] = useState<Question[]>(survey.questions);
     const [lock, setLock] = useState(false);
     const [collapse, setCollapse] = useState(false);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -95,34 +97,30 @@ export default function CreateQuestionGroup() {
     }, [screenWidth]);
 
     const questionInputChange = (idx: number, data: string) => {
-        let currentQuestion = questions.get(idx);
-        if(currentQuestion) {
-            currentQuestion.question = data;
-            questions.set(idx, currentQuestion);
+        if(idx < questions.length) {
+            questions[idx].question = data;
         }
     };
 
     const setQLock = (qIdx: number) => {
-        let currentQuestion = questions.get(qIdx);
-        if(currentQuestion) {
-            currentQuestion.isLock = !currentQuestion.isLock;
-            questions.set(qIdx, currentQuestion);
+        if(qIdx < questions.length) {
+            questions[qIdx].isLock = !questions[qIdx].isLock;
             setLock(!lock);
         }
     };
 
     const setQCollapse = (qIdx: number) => {
-        let currentQuestion = questions.get(qIdx);
-        if(currentQuestion) {
-            currentQuestion.isCollapsed = !currentQuestion.isCollapsed;
-            questions.set(qIdx, currentQuestion);
+        if(qIdx < questions.length) {
+            questions[qIdx].isCollapsed = !questions[qIdx].isCollapsed;
             setCollapse(!collapse);
         }
     };
 
     const deleteQuestion = (qIdx: number) => {
-        questions.delete(qIdx);
-        setQuestions(questions);
+        if(qIdx < questions.length) {
+            const deletedElement = questions.splice(qIdx);
+            setQuestions(questions);
+        }
     };
 
     const addNewQuestion = () => {
@@ -134,7 +132,7 @@ export default function CreateQuestionGroup() {
             return;
         }
 
-        questions.set(id, { id: id, question: "", choices: [], isLock: false, isCollapsed: false, type: QuestionType.RATED });
+        questions.push({ id: id, question: "", choices: [], isLock: false, isCollapsed: false, type: QuestionType.RATED });
         setId(id + 1);
         setQuestions(questions);
         console.log(questions);
@@ -150,7 +148,7 @@ export default function CreateQuestionGroup() {
 
     return (
         <div>
-            {mapPrettyPrint()}
+            {questions.map(question => QuestionUI(question, questionInputChange, setQLock, setQCollapse, deleteQuestion))}
             <div style={{ opacity: 0.3, marginLeft: '15%', marginRight: '15%', marginTop: '1rem' }} onClick={addNewQuestion}>
                 <textarea style={{ pointerEvents: 'none' }} contentEditable={false} value={""} tabIndex={-1} className="question-content" placeholder={QUESTION_HINT} ></textarea>
             </div>
