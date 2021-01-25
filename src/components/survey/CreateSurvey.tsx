@@ -1,22 +1,23 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import CreateQuestionGroup from "../question/CreateQuestion";
 import { ResultGroup } from "../result/CreateResult";
-import { surveyState } from "./Survey";
+import SurveyContext from './SurveyContext';
 
-
-export default function CreateSurvey() {
+export function CreateSurvey() {
 
   const finishSurvey = () => {
     console.log(JSON.stringify(surveyState.questions));
   };
 
   return (
-    <div>
-      <ResultGroup />
-      <CreateQuestionGroup></CreateQuestionGroup>
-      <div className="question-container">
-        <button className="button" onClick={finishSurvey}>Generate Survey</button>
+    <SurveyContext.Provider>
+      <div>
+        <ResultGroup />
+        <CreateQuestionGroup></CreateQuestionGroup>
+        <div className="question-container">
+          <button className="button" onClick={finishSurvey}>Generate Survey</button>
+        </div>
       </div>
-    </div>
+    </SurveyContext.Provider>
   );
 }

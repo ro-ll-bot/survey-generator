@@ -18,14 +18,18 @@ export interface SurveyTimelineCardData {
   statusDesc: SurveyStatus;
 }
 
+export interface Survey {
+  id: number;
+  owner: string;
+  title: string;
+  description: string;
+  questionCount: string;
+  questions: Question[];
+  results: SurveyResult[];
+  statusId: SurveyStatus;
+  statusDesc: SurveyStatus;
+}
+
 export interface SurveyProps {
   surveyList: SurveyTimelineCardData[];
 }
-
-// MANUAL STATE ..
-interface SurveyData {
-  questions: Map<number, Question>;
-  results: SurveyResult[];
-}
-
-export const surveyState: SurveyData = {questions: new Map(), results: []};
