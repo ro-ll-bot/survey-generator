@@ -2,7 +2,7 @@ import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import React, { useContext, useState } from 'react';
 import { SurveyResult } from './Result';
-import SurveyContext from "../survey/SurveyContext";
+import {SurveyContext} from "../survey/SurveyContext";
 
 const mockResult = [{
   id: 1,

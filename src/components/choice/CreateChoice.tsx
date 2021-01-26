@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { QuestionType } from '../question/Question';
 import { Choice, ChoiceProps } from './Choice';
-import SurveyContext from '../survey/SurveyContext';
 
 const CHOICE_HINT: string = 'Write a choice...';
 

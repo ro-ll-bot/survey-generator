@@ -1,12 +1,11 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, useReducer } from 'react';
 import { Question, QuestionType } from './Question';
 import { FaLock, FaUnlock, FaChevronDown, FaChevronRight, FaTrash } from 'react-icons/fa';
 
 import CreateChoiceGroup from '../choice/CreateChoice';
-import SurveyContext from '../survey/SurveyContext';
+import {SurveyContext} from '../survey/SurveyContext';
 
 const QUESTION_HINT: string = 'Write a question...';
-
 
 function QuestionUI(question: Question,
     updateQContent: (idx: number, data: string) => void,
@@ -59,6 +58,7 @@ function QuestionUI(question: Question,
                     style={{ pointerEvents: pointerEvents }}
                     placeholder={QUESTION_HINT}
                     defaultValue={question.question}
+                    value={question.question}
                     onChange={e => updateQContent(question.id, e.target.value)}>
 
                 </textarea>
@@ -74,6 +74,8 @@ function QuestionUI(question: Question,
     );
 }
 
+const reducer = (id: number) => id+1;
+
 export default function CreateQuestionGroup() {
 
     const survey = useContext(SurveyContext);
@@ -83,7 +85,9 @@ export default function CreateQuestionGroup() {
     const [lock, setLock] = useState(false);
     const [collapse, setCollapse] = useState(false);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
+    const [content, setContent] = useState("");
+    const [idxReducer, updateIdxReducer] = useReducer(reducer, 0);
+    
     // Track screen width to reArrange question content length when it is collapsed.
     const setWidth = () => setScreenWidth(window.innerWidth);
     window.addEventListener('resize', setWidth);
@@ -96,31 +100,34 @@ export default function CreateQuestionGroup() {
         return window.removeEventListener('resize', setWidth);
     }, [screenWidth]);
 
-    const questionInputChange = (idx: number, data: string) => {
+    const questionInputChange = (qId: number, data: string) => {
+        const idx = qId - idxReducer;
+        console.log(`idx= ${idx}, id= ${qId}`)
         if(idx < questions.length) {
             questions[idx].question = data;
+            setContent(data);
         }
     };
 
-    const setQLock = (qIdx: number) => {
-        if(qIdx < questions.length) {
-            questions[qIdx].isLock = !questions[qIdx].isLock;
+    const setQLock = (qId: number) => {
+        const idx = qId - idxReducer;
+        if(idx < questions.length) {
+            questions[idx].isLock = !questions[idx].isLock;
             setLock(!lock);
         }
     };
 
-    const setQCollapse = (qIdx: number) => {
-        if(qIdx < questions.length) {
-            questions[qIdx].isCollapsed = !questions[qIdx].isCollapsed;
+    const setQCollapse = (qId: number) => {
+        const idx = qId - idxReducer;
+        if(idx < questions.length) {
+            questions[idx].isCollapsed = !questions[idx].isCollapsed;
             setCollapse(!collapse);
         }
     };
 
     const deleteQuestion = (qIdx: number) => {
-        if(qIdx < questions.length) {
-            const deletedElement = questions.splice(qIdx);
-            setQuestions(questions);
-        }
+        setQuestions(questions.filter(question => question.id !== qIdx));
+        updateIdxReducer();
     };
 
     const addNewQuestion = () => {
@@ -135,16 +142,8 @@ export default function CreateQuestionGroup() {
         questions.push({ id: id, question: "", choices: [], isLock: false, isCollapsed: false, type: QuestionType.RATED });
         setId(id + 1);
         setQuestions(questions);
-        console.log(questions);
     }
 
-    const mapPrettyPrint = (): JSX.Element[] =>  {
-        const elements: JSX.Element[] = [];
-        questions.forEach(question => {
-            elements.push(QuestionUI(question, questionInputChange, setQLock, setQCollapse, deleteQuestion));
-        })
-        return elements;
-    };
 
     return (
         <div>

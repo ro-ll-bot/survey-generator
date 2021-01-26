@@ -4,7 +4,7 @@ import { Question } from "../question/Question";
 import { ResultGroup } from "../result/CreateResult";
 import { SurveyResult } from "../result/Result";
 import { Survey } from "./Survey";
-import SurveyContext from './SurveyContext';
+import {SurveyContext} from './SurveyContext';
 
 export default function CreateSurvey() {
 
